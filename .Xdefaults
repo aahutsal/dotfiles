@@ -1,0 +1,92 @@
+!-------------------------------------------------------------------------------
+! Xft settings
+!-------------------------------------------------------------------------------
+
+Xft.dpi: 196
+
+Xft.autohint: 0
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintslight
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+
+! -------------------------------------------------------------------------------
+! URxvt settings
+! Colours lifted from Solarized (http://ethanschoonover.com/solarized)
+! More info at:
+! http://pod.tst.eu/http://cvs.schmorp.de/rxvt-unicode/doc/rxvt.1.pod
+! -------------------------------------------------------------------------------
+
+URxvt.depth:                24
+! URxvt.geometry:		    90x30
+URxvt.transparent:          false
+URxvt.tintColor:	    blue
+URxvt.shading:		    50
+URxvt.fading:               90
+URxvt.urgentOnBell:         true
+URxvt.visualBell:           true
+URxvt.loginShell:           true
+
+URxvt.lineSpace:            0
+URxvt.internalBorder:       9
+
+! URxvt.font:                 xft:DejaVu Sans Mono for Powerline:pixelsize=22
+! URxvt.boldFont:             xft:DejaVu Sans Mono for Powerline:pixelsize=22:Bold
+! URxvt.italicFont:           xft:DejaVu Sans Mono for Powerline:pixelsize=22:Italic
+! URxvt.boldItalicFont:       xft:DejaVu Sans Mono for Powerline:pixelsize=22:Bold:Italic
+
+! Add to your .Xdefaults (or .Xresources) the following lines:
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.iso14755: False
+
+!! Larger history limit
+URxvt.saveLines: 1000000
+
+!! Perl extensions
+URxvt.perl-ext-common: default,matcher,font-size,clipboard
+!! Open urls in browser with Control-Click
+URxvt.urlLauncher: /usr/bin/firefox
+!! Change font size on Control-Plus/Minus
+URxvt.keysym.C-Up:     font-size:increase
+URxvt.keysym.C-Down:   font-size:decrease
+URxvt.keysym.C-S-Up:   font-size:incglobal
+URxvt.keysym.C-S-Down: font-size:decglobal
+URxvt.keysym.C-equal:  font-size:reset
+URxvt.keysym.C-S-slash:  font-size:show
+
+
+! Fonts
+URxvt.allow_bold:           true
+
+! Fix font space
+URxvt.letterSpace: -1
+! Scrollbar
+URxvt.scrollStyle:          rxvt
+URxvt.scrollBar:            false
+! Cursor
+URxvt.cursorBlink:          true
+URxvt.cursorColor:          #657b83
+URxvt.cursorUnderline:      false
+
+! Pointer
+URxvt.pointerBlank:         true
+
+! Perl extensions
+URxvt.matcher.button:       1
+URxvt.url-launcher:         google-chrome
+
+
+! Emacs
+Emacs.font: DejaVu Sans Mono for Powerline:style=Oblique
+! Emacs.default.attributeFont: -PfEd-DejaVu Sans Mono-normal-normal-normal-.-12-.-.-.-m-0-fontset-startup
+! Emacs.font: -PfEd-DejaVu Sans Mono-normal-normal-normal-.-12-.-.-.-m-0-fontset-startup
+! Emacs.modeline.attributeFont: -PfEd-DejaVu Sans Mono-normal-normal-normal-.-12-.-.-.-m-0-fontset-startup
+! Emacs.menubar.font: -PfEd-DejaVu Sans Mono-normal-normal-normal-.-12-.-.-.-m-0-fontset-startup
+! Emacs.pane.menubar.font: -PfEd-DejaVu Sans Mono-normal-normal-normal-.-12-.-.-.-m-0-fontset-startup
+! Emacs.default.attributeFont   xft:DejaVu Sans Mono for Powerline:pixelsize
+! Emacs*font: xft:DejaVu Sans Mono for Powerline:pixelsize=22
+! Emacs.menubar.font:           xft:DejaVu Sans Mono for Powerline:pixelsize=22
+! Emacs.modeline.attributeFont: xft:DejaVu Sans Mono for Powerline:pixelsize=22
+! *.font: -jmk-neep alt-medium-r-*-*-20-*-*-*-c-*-iso8859-1
+! Emacs.pane.menubar.font: -jmk-neep alt-medium-r-*-*-20-*-*-*-c-*-iso8859-1
