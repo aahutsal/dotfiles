@@ -1,0 +1,3 @@
+#!/bin/sh
+
+sudo rc-service net.wlp2s0 restart
