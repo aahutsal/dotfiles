@@ -118,7 +118,7 @@ rxvt*modifier: alt
 
 
 ! Emacs
-Emacs.font: DejaVu Sans Mono:style=Oblique:pixelsize=12
+Emacs.font: DejaVu Sans Mono:style=Oblique:pixelsize=8
 ! Emacs.default.attributeFont: -PfEd-DejaVu Sans Mono-normal-normal-normal-.-12-.-.-.-m-0-fontset-startup
 ! Emacs.font: -PfEd-DejaVu Sans Mono-normal-normal-normal-.-12-.-.-.-m-0-fontset-startup
 ! Emacs.modeline.attributeFont: -PfEd-DejaVu Sans Mono-normal-normal-normal-.-12-.-.-.-m-0-fontset-startup

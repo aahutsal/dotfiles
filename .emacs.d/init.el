@@ -158,8 +158,8 @@
 		(set-face-attribute 'mode-line          nil :box        nil)
 		(set-face-attribute 'mode-line-inactive nil :box        nil)
 		(set-face-attribute 'mode-line-inactive nil :background "#f9f2d9")))
-(set-frame-font "DejaVu Sans Mono-8" nil t)
-(set-face-attribute 'default nil :family "DejaVu Sans Mono" :height 60)
+(set-frame-font "DejaVu Sans Mono" nil t)
+(set-face-attribute 'default nil :family "DejaVu Sans Mono" :height 45)
 
 ;; Sentences end with a single space
 
