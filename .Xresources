@@ -83,3 +83,51 @@ URxvt*scrolldWithBufferr: true
 XTerm*eightBitInput:   false
 XTerm*metaSendsEscape: true
 rxvt*modifier: alt
+
+! !! black dark/light
+*color0: #073642
+*color8: #002b36
+
+!! red dark/light
+*color1: #dc322f
+*color9: #cb4b16
+
+!! green dark/light
+*color2: #859900
+*color10: #586e75
+
+!! yellow dark/light
+*color3: #b58900
+*color11: #657b83
+
+!! blue dark/light
+*color4: #268bd2
+*color12: #839496
+
+!! magenta dark/light
+*color5: #d33682
+*color13: #6c71c4
+
+!! cyan dark/light
+*color6: #2aa198
+*color14: #93a1a1
+
+!! white dark/light
+*color7: #eee8d5
+*color15: #fdf6e3
+
+
+! Emacs
+Emacs.font: DejaVu Sans Mono:style=Oblique:pixelsize=12
+! Emacs.default.attributeFont: -PfEd-DejaVu Sans Mono-normal-normal-normal-.-12-.-.-.-m-0-fontset-startup
+! Emacs.font: -PfEd-DejaVu Sans Mono-normal-normal-normal-.-12-.-.-.-m-0-fontset-startup
+! Emacs.modeline.attributeFont: -PfEd-DejaVu Sans Mono-normal-normal-normal-.-12-.-.-.-m-0-fontset-startup
+! Emacs.menubar.font: -PfEd-DejaVu Sans Mono-normal-normal-normal-.-12-.-.-.-m-0-fontset-startup
+! Emacs.pane.menubar.font: -PfEd-DejaVu Sans Mono-normal-normal-normal-.-12-.-.-.-m-0-fontset-startup
+! Emacs.default.attributeFont   xft:DejaVu Sans Mono for Powerline:pixelsize
+! Emacs*font: xft:DejaVu Sans Mono for Powerline:pixelsize=22
+! Emacs.menubar.font:           xft:DejaVu Sans Mono for Powerline:pixelsize=22
+! Emacs.modeline.attributeFont: xft:DejaVu Sans Mono for Powerline:pixelsize=22
+! *.font: -jmk-neep alt-medium-r-*-*-20-*-*-*-c-*-iso8859-1
+! Emacs.pane.menubar.font: -jmk-neep alt-medium-r-*-*-20-*-*-*-c-*-iso8859-1
+

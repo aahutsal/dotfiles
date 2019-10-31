@@ -16,14 +16,12 @@ Xft.rgba: rgb
 ! Colours lifted from Solarized (http://ethanschoonover.com/solarized)
 ! More info at:
 ! http://pod.tst.eu/http://cvs.schmorp.de/rxvt-unicode/doc/rxvt.1.pod
-! -------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
-URxvt.depth:                24
-! URxvt.geometry:		    90x30
-URxvt.transparent:          false
-URxvt.tintColor:	    blue
-URxvt.shading:		    50
-URxvt.fading:               90
+
+URxvt.geometry:		    			90x30
+URxvt.tintColor:	    			blue
+URxvt.fading:               0
 URxvt.urgentOnBell:         true
 URxvt.visualBell:           true
 URxvt.loginShell:           true
@@ -34,26 +32,19 @@ URxvt.internalBorder:       9
 ! URxvt.font:                 xft:DejaVu Sans Mono for Powerline:pixelsize=22
 ! URxvt.boldFont:             xft:DejaVu Sans Mono for Powerline:pixelsize=22:Bold
 ! URxvt.italicFont:           xft:DejaVu Sans Mono for Powerline:pixelsize=22:Italic
-! URxvt.boldItalicFont:       xft:DejaVu Sans Mono for Powerline:pixelsize=22:Bold:Italic
+! URxvt.boldItalicFont:   		xft:DejaVu Sans Mono for Powerline:pixelsize=22:Bold:Italic
 
 ! Add to your .Xdefaults (or .Xresources) the following lines:
 URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 URxvt.iso14755: False
 
-!! Larger history limit
-URxvt.saveLines: 1000000
-
-!! Perl extensions
-URxvt.perl-ext-common: default,matcher,font-size,clipboard
-!! Open urls in browser with Control-Click
-URxvt.urlLauncher: /usr/bin/firefox
 !! Change font size on Control-Plus/Minus
-URxvt.keysym.C-Up:     font-size:increase
-URxvt.keysym.C-Down:   font-size:decrease
-URxvt.keysym.C-S-Up:   font-size:incglobal
-URxvt.keysym.C-S-Down: font-size:decglobal
-URxvt.keysym.C-equal:  font-size:reset
-URxvt.keysym.C-S-slash:  font-size:show
+URxvt.keysym.C-Up:			font-size:increase
+URxvt.keysym.C-Down:		font-size:decrease
+URxvt.keysym.C-S-Up:		font-size:incglobal
+URxvt.keysym.C-S-Down:	font-size:decglobal
+URxvt.keysym.C-equal:		font-size:reset
+URxvt.keysym.C-S-slash: font-size:show
 
 
 ! Fonts
@@ -61,9 +52,6 @@ URxvt.allow_bold:           true
 
 ! Fix font space
 URxvt.letterSpace: -1
-! Scrollbar
-URxvt.scrollStyle:          rxvt
-URxvt.scrollBar:            false
 ! Cursor
 URxvt.cursorBlink:          true
 URxvt.cursorColor:          #657b83
@@ -73,20 +61,29 @@ URxvt.cursorUnderline:      false
 URxvt.pointerBlank:         true
 
 ! Perl extensions
-URxvt.matcher.button:       1
-URxvt.url-launcher:         google-chrome
+URxvt.url-launcher:         /usr/bin/xdg-open
 
+! Large history limit
+URxvt.saveLines: 10000
+URxvt.scrollBar: false
+URxvt.foreground: #f9f7f1
+URxvt.depth: 32
+URxvt.secondaryScroll: true
+URxvt.font: xft:DejaVu Sans Mono:pixelsize=12:antialias=true
+URxvt.perl-ext-common: default,matcher,tabbed,selection-to-clipboard
+URxvt.matcher.button: 1
+URxvt.tabbed.saveLines: 2000
+URxvt.tabbed.scrollBar: false
+URxvt.tabbed.secondaryScroll: true
+URxvt.tabbed.font: xft:DejaVu Sans Mono:pixelsize=22:antialias=true
+URxvt.intensityStyles: false
 
-! Emacs
-Emacs.font: DejaVu Sans Mono for Powerline:style=Oblique
-! Emacs.default.attributeFont: -PfEd-DejaVu Sans Mono-normal-normal-normal-.-12-.-.-.-m-0-fontset-startup
-! Emacs.font: -PfEd-DejaVu Sans Mono-normal-normal-normal-.-12-.-.-.-m-0-fontset-startup
-! Emacs.modeline.attributeFont: -PfEd-DejaVu Sans Mono-normal-normal-normal-.-12-.-.-.-m-0-fontset-startup
-! Emacs.menubar.font: -PfEd-DejaVu Sans Mono-normal-normal-normal-.-12-.-.-.-m-0-fontset-startup
-! Emacs.pane.menubar.font: -PfEd-DejaVu Sans Mono-normal-normal-normal-.-12-.-.-.-m-0-fontset-startup
-! Emacs.default.attributeFont   xft:DejaVu Sans Mono for Powerline:pixelsize
-! Emacs*font: xft:DejaVu Sans Mono for Powerline:pixelsize=22
-! Emacs.menubar.font:           xft:DejaVu Sans Mono for Powerline:pixelsize=22
-! Emacs.modeline.attributeFont: xft:DejaVu Sans Mono for Powerline:pixelsize=22
-! *.font: -jmk-neep alt-medium-r-*-*-20-*-*-*-c-*-iso8859-1
-! Emacs.pane.menubar.font: -jmk-neep alt-medium-r-*-*-20-*-*-*-c-*-iso8859-1
+URxvt.background: [80]#000000
+URxvt.inheritPixmap: false
+URxvt.transparent: false
+URxvt.shading: 100
+
+URxvt.keysym.C-Delete: perl:matcher:last
+URxvt.keysym.M-Delete: perl:matcher:list
+URxvt.matcher.rend.0: Uline Bold fg5
+URxvt.colorUL: #4682B4

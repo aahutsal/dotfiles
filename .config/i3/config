@@ -20,11 +20,11 @@ set $control ~/.config/i3/workspace_controller.py
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 18px
-font pango:Droid Sans Mono 12px
-font pango:DejaVu Sans Mono 12px
-font pango:DejaVu Sans Mono 12px
-font pango:Terminus 12px
-font pango:Terminus Bold Semi-Condensed 12px
+font pango:Droid Sans Mono 10px
+font pango:DejaVu Sans Mono 10px
+font pango:DejaVu Sans Mono 10px
+font pango:Terminus 10px
+font pango:Terminus Bold Semi-Condensed 10px
 
 # Before i3 v4.8, we used to recommend this one as the default:
 #font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -46,15 +46,14 @@ bindsym --release $mod+Shift+w kill
 
 # run google-chrome-stable scaled
 #bindsym $mod+g exec google-chrome-stable --force-device-scale-factor=2
-bindsym $mod+g exec dbus-launch google-chrome-stable --force-device-scale-factor=2
-bindsym $mod+Shift+g exec dbus-launch google-chrome-stable --force-device-scale-factor=1
+bindsym $mod+g exec dbus-launch google-chrome-stable --force-device-scale-factor=1
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec $control open
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -fn 'pango:Droid Sans Mono:pixelsize=28' -i -p 'Gentoo Linux'"
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -fn 'pango:Droid Sans Mono:pixelsize=22' -i -p 'Gentoo Linux'"
 
 # change focus
 bindsym $mod+j focus left
@@ -97,8 +96,8 @@ bindsym $mod+e layout toggle split
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# change clipboard on/off mode
+bindsym $mod+C clipboard mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -145,6 +144,9 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +10% &
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -10% && killall -SIGUSR1 i3status
 
 # resize window (you can also use the mouse for that)
+mode "clipboard" {
+		 bindsym X exec "echo '#ChristianDating'|xclip -s"
+}
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
@@ -173,8 +175,8 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-	font pango:Droid Sans Mono 20px
-        colors {
+	font pango:Droid Sans Mono 12px
+   colors {
 		# Whole color settings
 		background #000000
 		statusline #ffffff
