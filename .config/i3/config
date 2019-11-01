@@ -47,6 +47,7 @@ bindsym --release $mod+Shift+w kill
 # run google-chrome-stable scaled
 #bindsym $mod+g exec google-chrome-stable --force-device-scale-factor=2
 bindsym $mod+g exec dbus-launch google-chrome-stable --force-device-scale-factor=1
+bindsym $mod+o exec vglconnect 192.168.1.54 -p2022 dbus-launch vglrun -c rgb opera -force-device-scale-factor=1
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec $control open
