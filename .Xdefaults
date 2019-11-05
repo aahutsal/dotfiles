@@ -20,14 +20,14 @@ Xft.rgba: rgb
 
 
 URxvt.geometry:		    			90x30
-URxvt.tintColor:	    			blue
-URxvt.fading:               0
+URxvt.tintColor:	    			#7777C0
+URxvt.fading:               90
 URxvt.urgentOnBell:         true
 URxvt.visualBell:           true
 URxvt.loginShell:           true
 
 URxvt.lineSpace:            0
-URxvt.internalBorder:       9
+URxvt.internalBorder:       2
 
 ! URxvt.font:                 xft:DejaVu Sans Mono for Powerline:pixelsize=22
 ! URxvt.boldFont:             xft:DejaVu Sans Mono for Powerline:pixelsize=22:Bold
@@ -79,9 +79,9 @@ URxvt.tabbed.font: xft:DejaVu Sans Mono:pixelsize=22:antialias=true
 URxvt.intensityStyles: false
 
 URxvt.background: [80]#000000
-URxvt.inheritPixmap: false
-URxvt.transparent: false
-URxvt.shading: 100
+URxvt.inheritPixmap: true
+URxvt.transparent: true
+URxvt.shading: 90
 
 URxvt.keysym.C-Delete: perl:matcher:last
 URxvt.keysym.M-Delete: perl:matcher:list
