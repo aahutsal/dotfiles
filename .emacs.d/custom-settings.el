@@ -6,7 +6,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
 	 (quote
-		(beacon multi-term magithub w3m diminish dash auto-compile use-package ace-window chess w3))))
+		(magithub magit ## beacon multi-term w3m diminish dash auto-compile use-package ace-window chess w3))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
