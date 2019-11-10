@@ -29,10 +29,10 @@ URxvt.loginShell:           true
 URxvt.lineSpace:            0
 URxvt.internalBorder:       2
 
-! URxvt.font:                 xft:DejaVu Sans Mono for Powerline:pixelsize=22
-! URxvt.boldFont:             xft:DejaVu Sans Mono for Powerline:pixelsize=22:Bold
-! URxvt.italicFont:           xft:DejaVu Sans Mono for Powerline:pixelsize=22:Italic
-! URxvt.boldItalicFont:   		xft:DejaVu Sans Mono for Powerline:pixelsize=22:Bold:Italic
+URxvt.font:                 xft:DejaVu Sans Mono:pixelsize=10
+URxvt.boldFont:             xft:DejaVu Sans Mono for Powerline:pixelsize=10:Bold
+URxvt.italicFont:           xft:DejaVu Sans Mono for Powerline:pixelsize=10:Italic
+URxvt.boldItalicFont:   		xft:DejaVu Sans Mono for Powerline:pixelsize=10:Bold:Italic
 
 ! Add to your .Xdefaults (or .Xresources) the following lines:
 URxvt.keysym.Shift-Control-V: perl:clipboard:paste
