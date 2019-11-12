@@ -52,12 +52,6 @@
 *pointerColorBackground:  S_base01
 *pointerColorForeground:  S_base1
 
-
-URxvt.font:xft:DejaVu Sans Mono:size=8:autohint=false:antialias=true:hinting=true
-URxvt*boldFont:xft:DejaVu Sans Mono:size=8:autohint=false:antialias=true:hinting=true
-URxvt*italicFont:xft:DejaVu Sans Mono:italic:size=8:autohint=true
-URxvt*boldItalicFont:xft:DejaVu Sans Mono:bold:italic:size=8:autohint=true
-
 Xft.dpi: 242
 
 !font settings
@@ -101,11 +95,10 @@ rxvt*modifier: alt
 *color7: #eee8d5
 *color15: #fdf6e3
 
-
 ! Emacs
-Emacs.font: DejaVu Sans Mono:style=Oblique:pixelsize=8
-Emacs.default.attributeFont: -PfEd-DejaVu Sans Mono-normal-normal-normal-.-12-.-.-.-m-0-fontset-startup
-Emacs.modeline.attributeFont: -PfEd-DejaVu Sans Mono-normal-normal-normal-.-12-.-.-.-m-0-fontset-startup
-Emacs.menubar.font: -PfEd-DejaVu Sans Mono-normal-normal-normal-.-12-.-.-.-m-0-fontset-startup
-Emacs.pane.menubar.font: -PfEd-DejaVu Sans Mono-normal-normal-normal-.-12-.-.-.-m-0-fontset-startup
+Emacs.font: DejaVu Sans Mono:pixelsize=10
+Emacs.default.attributeFont: DejaVu Sans Mono:pixelsize=10
+Emacs.modeline.attributeFont: DejaVu Sans Mono:pixelsize=10
+Emacs.menubar.font: DejaVu Sans Mono:pixelsize=10
+Emacs.pane.menubar.font: DejaVu Sans Mono:pixelsize=10
 
