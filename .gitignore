@@ -23,3 +23,4 @@
 !/.bashrc
 !/.zshrc
 !/.gitignore
+/.emacs.d/custom-settings.el
