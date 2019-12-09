@@ -184,3 +184,6 @@
 (setq beacon-push-mark 35)
 (setq beacon-color "#007770")
 
+;; Docker
+(use-package docker :ensure t)
+
