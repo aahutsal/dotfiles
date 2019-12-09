@@ -17,26 +17,26 @@
 
 ! Dark
 
-#define S_base03        #002b36
-#define S_base02        #073642
-#define S_base01        #586e75
-#define S_base00        #657b83
-#define S_base0         #839496
-#define S_base1         #93a1a1
-#define S_base2         #eee8d5
-#define S_base3         #fdf6e3
+! #define S_base03        #002b36
+! #define S_base02        #073642
+! #define S_base01        #586e75
+! #define S_base00        #657b83
+! #define S_base0         #839496
+! #define S_base1         #93a1a1
+! #define S_base2         #eee8d5
+! #define S_base3         #fdf6e3
 
 
 ! ! Light
 
-! #define S_base03        #fdf6e3
-! #define S_base02        #eee8d5
-! #define S_base01        #93a1a1
-! #define S_base00        #839496
-! #define S_base0         #657b83
-! #define S_base1         #586e75
-! #define S_base2         #073642
-! #define S_base3         #002b36
+#define S_base03        #fdf6e3
+#define S_base02        #eee8d5
+#define S_base01        #93a1a1
+#define S_base00        #839496
+#define S_base0         #657b83
+#define S_base1         #586e75
+#define S_base2         #073642
+#define S_base3         #002b36
 
 
 ! To only apply colors to your terminal, for example, prefix
@@ -52,29 +52,8 @@
 *pointerColorBackground:  S_base01
 *pointerColorForeground:  S_base1
 
-*color0:                  S_base02
-*color1:                  S_red
-*color2:                  S_green
-*color3:                  S_yellow
-*color4:                  S_blue
-*color5:                  S_magenta
-*color6:                  S_cyan
-*color7:                  S_base2
-*color9:                  S_orange
-*color8:                  S_base03
-*color10:                 S_base01
-*color11:                 S_base00
-*color12:                 S_base0
-*color13:                 S_violet
-*color14:                 S_base1
-*color15:                 S_base3
-
-URxvt.font:xft:Droid Sans Mono:size=8:autohint=false:antialias=true:hinting=true
-URxvt*boldFont:xft:Droid Sans Mono:size=8:autohint=false:antialias=true:hinting=true
-URxvt*italicFont:xft:Droid Sans Mono:italic:size=8:autohint=true
-URxvt*boldItalicFont:xft:Droid Sans Mono:bold:italic:size=8:autohint=true
-
 Xft.dpi: 242
+
 !font settings
 URxvt*scrollBar: false
 URxvt*scrollBar_right: false
@@ -116,18 +95,10 @@ rxvt*modifier: alt
 *color7: #eee8d5
 *color15: #fdf6e3
 
-
 ! Emacs
-Emacs.font: DejaVu Sans Mono:style=Oblique:pixelsize=8
-! Emacs.default.attributeFont: -PfEd-DejaVu Sans Mono-normal-normal-normal-.-12-.-.-.-m-0-fontset-startup
-! Emacs.font: -PfEd-DejaVu Sans Mono-normal-normal-normal-.-12-.-.-.-m-0-fontset-startup
-! Emacs.modeline.attributeFont: -PfEd-DejaVu Sans Mono-normal-normal-normal-.-12-.-.-.-m-0-fontset-startup
-! Emacs.menubar.font: -PfEd-DejaVu Sans Mono-normal-normal-normal-.-12-.-.-.-m-0-fontset-startup
-! Emacs.pane.menubar.font: -PfEd-DejaVu Sans Mono-normal-normal-normal-.-12-.-.-.-m-0-fontset-startup
-! Emacs.default.attributeFont   xft:DejaVu Sans Mono for Powerline:pixelsize
-! Emacs*font: xft:DejaVu Sans Mono for Powerline:pixelsize=22
-! Emacs.menubar.font:           xft:DejaVu Sans Mono for Powerline:pixelsize=22
-! Emacs.modeline.attributeFont: xft:DejaVu Sans Mono for Powerline:pixelsize=22
-! *.font: -jmk-neep alt-medium-r-*-*-20-*-*-*-c-*-iso8859-1
-! Emacs.pane.menubar.font: -jmk-neep alt-medium-r-*-*-20-*-*-*-c-*-iso8859-1
+Emacs.font: DejaVu Sans Mono:pixelsize=10
+Emacs.default.attributeFont: DejaVu Sans Mono:pixelsize=10
+Emacs.modeline.attributeFont: DejaVu Sans Mono:pixelsize=10
+Emacs.menubar.font: DejaVu Sans Mono:pixelsize=10
+Emacs.pane.menubar.font: DejaVu Sans Mono:pixelsize=10
 
