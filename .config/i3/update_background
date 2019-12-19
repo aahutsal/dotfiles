@@ -1,5 +1,6 @@
 #!/bin/bash
 files=(~/Desktop/*)
 COMIC=$(printf "%s\n" "${files[RANDOM % ${#files[@]}]}")
-feh -B white --bg-center $COMIC 
+# feh -B white --bg-center $COMIC
+feh -B white --bg-center "${files[RANDOM % ${#files[@]}]}"
 echo $COMIC > ~/.latest_comic
