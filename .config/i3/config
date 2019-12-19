@@ -44,19 +44,19 @@ bindsym $mod+Return exec urxvt -e tmux
 # kill focused window
 bindsym --release $mod+Shift+w kill
 
-bindsym $mod+Ctrl+e vglconnect 192.168.0.12 -XYCt -p2122 PULSE_SERVER=192.168.0.57 dbus-launch vglrun emacsclient -c
+bindsym $mod+Ctrl+e exec ~/bin/run-on-aws emacsclient -c
 
 # run google-chrome-stable scaled
 #bindsym $mod+g exec google-chrome-stable --force-device-scale-factor=2
-bindsym $mod+g exec vglconnect 192.168.0.12 -XYCt PULSE_SERVER=192.168.0.57 dbus-launch vglrun -display $DISPLAY chromium-browser --force-device-scale-factor=1
-bindsym $mod+o exec vglconnect 192.168.0.12 -XYCt PULSE_SERVER=192.168.0.57 dbus-launch vglrun opera -force-device-scale-factor=1
+bindsym $mod+g exec vglconnect 192.168.0.12 -XYCt  -R 4713:localhost:4713 PULSE_SERVER=localhost dbus-launch vglrun -display $DISPLAY chromium-browser
+bindsym $mod+o exec vglconnect 192.168.0.12 -XYCt -R 4713:localhost:4713 PULSE_SERVER=localhost dbus-launch vglrun opera
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec $control open
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -fn 'pango:Droid Sans Mono:pixelsize=22' -i -p 'Gentoo Linux'"
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -fn 'pango:Droid Sans Mono:pixelsize=18' -i -p 'Gentoo Linux'"
 
 # change focus
 bindsym $mod+j focus left
@@ -145,6 +145,9 @@ bindsym $mod+Shift+a exec "ANDROID_SDK_ROOT=~/Android/Sdk /opt/android-sdk/emula
 
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +10% && killall -SIGUSR1 i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -10% && killall -SIGUSR1 i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
 
 # resize window (you can also use the mouse for that)
 mode "clipboard" {
@@ -194,8 +197,8 @@ bar {
 	# i3bar position
 	position top
 	# Using custom i3status.conf
-#	status_command i3status -c ~/.i3/i3status.conf
-        status_command i3status
+	status_command sh -c 'i3status -c ~/.config/i3/i3status.conf|~/bin/i3status-netusage --interface=enp1s0'
+#        status_command i3status
 }
 
 # screensaver (with lock)
@@ -304,3 +307,9 @@ for_window [ class="^InputOutput" title="^Android"] border pixel
 # exec urxvt -name "dev3" -e emacsclient -c -t
 # exec urxvt -pe tabbed -name dev4
 # exec urxvt -pe tabbed -name dev5
+exec --no-startup-id ~/.config/i3/update_background
+exec --no-startup-id mate-settings-daemon
+exec --no-startup-id nm-applet
+exec --no-startup-id mate-power-manager 
+exec --no-startup-id blueman-applet
+exec --no-startup-id compton 
