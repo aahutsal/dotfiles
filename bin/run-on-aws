@@ -1,0 +1,4 @@
+#!/bin/sh
+
+vglconnect ec2-user@$(get_aws_ip) -XYCt PULSE_SERVER=localhost vglrun
+/bin/bash
