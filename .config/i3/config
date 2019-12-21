@@ -100,7 +100,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change clipboard on/off mode
-bindsym $mod+C clipboard mode_toggle
+# bindsym $mod+C clipboard mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -288,6 +288,27 @@ exec xset r rate 200 25 # setting kbd rate
 # #assign [ class="^Google-chrome-stable$" title=" - Google Chrome$" ] 5
 
 for_window [ class="^Google-chrome" title="Tomatoes$"] move scratchpad
+for_window [class=".*"] border pixel 1
+
+# Examples
+gaps inner 2
+gaps outer  2
+gaps horizontal 2
+gaps vertical 2
+
+# Only enable gaps on a workspace when there is at least one container
+smart_gaps on
+# Only enable outer gaps when there is exactly one container
+smart_gaps inverse_outer
+# Activate smart borders (always)
+smart_borders on
+# Activate smart borders (only when there are effectively no gaps)
+smart_borders no_gaps
+# Hide edge borders only if there is one window with no gaps
+hide_edge_borders smart_no_gaps
+
+# workspace 0 gaps outer 5
+
 for_window [ class="^InputOutput" title="^Android"] border pixel
 # for_window [ class="^Opera"] border pixel
 # for_window [ class="^URxvt$" ] border pixel
@@ -308,8 +329,8 @@ for_window [ class="^InputOutput" title="^Android"] border pixel
 # exec urxvt -pe tabbed -name dev4
 # exec urxvt -pe tabbed -name dev5
 exec --no-startup-id ~/.config/i3/update_background
-exec --no-startup-id mate-settings-daemon
+exec --no-startup-id /usr/libexec/mate-settings-daemon
 exec --no-startup-id nm-applet
 exec --no-startup-id mate-power-manager 
-exec --no-startup-id blueman-applet
-exec --no-startup-id compton 
+# exec --no-startup-id blueman-applet
+# exec --no-startup-id compton 
