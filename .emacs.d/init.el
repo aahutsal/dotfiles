@@ -2,18 +2,45 @@
 
 (fset 'mm-decode-coding-region 'decode-coding-region)
 
+(require 'package)
+(let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+                    (not (gnutls-available-p))))
+       (proto (if no-ssl "http" "https")))
+  (when no-ssl
+    (warn "\
+Your version of Emacs does not support SSL connections,
+which is unsafe because it allows man-in-the-middle attacks.
+There are two things you can do about this warning:
+1. Install an Emacs version that does support SSL and be safe.
+2. Remove this warning from your init file so you won't see it again."))
+  ;; Comment/uncomment these two lines to enable/disable MELPA and MELPA Stable as desired
+;;  (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
+  (add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
+  (when (< emacs-major-version 24)
+    ;; For important compatibility libraries like cl-lib
+    (add-to-list 'package-archives (cons "gnu" (concat proto "://elpa.gnu.org/packages/")))))
 (package-initialize)
 (setq use-package-always-ensure t)
 (add-to-list 'load-path "/usr/local/share/emacs/site-lisp")
+
+(add-to-list 'load-path "~/.emacs.d/emacs-for-clojure")
+(add-to-list 'load-path "~/.emacs.d/emacs-for-clojure/customizations")
+
+(add-to-list 'load-path "~/.emacs.d/emacs-for-clojure/themes")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-for-clojure/themes")
+(load "~/.emacs.d/emacs-for-clojure/init.el")
+
+
 (setq custom-file "~/.emacs.d/custom-settings.el")
 (load custom-file t)
 
+;; TODO make sure we need functions belo
 (defun my/laptop-p ()
   (equal (system-name) "sacha-kubuntu"))
 (defun my/server-p ()
-  (and (equal (system-name) "localhost") (equal user-login-name "sacha")))
+  (and (equal (system-name) "localhost") (equal user-login-name "archer")))
 (defun my/phone-p ()
-  (and (equal (system-name) "localhost") (not (equal user-login-name "sacha"))))
+  (and (equal (system-name) "localhost") (not (equal user-login-name "archer"))))
 
 ;; Simplifies syncing
 (global-auto-revert-mode)
@@ -57,11 +84,12 @@
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 
 ; Disk space is cheap. Save lots.
-
-(setq delete-old-versions -1)
-(setq version-control t)
-(setq vc-make-backup-files t)
+(setq delete-old-versions t)
+(setq version-control -1)
+(setq vc-make-backup-files -1)
+(setq auto-save-default -1)
 (setq auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
+
 
 ;; History
 
@@ -159,7 +187,7 @@
 		(set-face-attribute 'mode-line-inactive nil :box        nil)
 		(set-face-attribute 'mode-line-inactive nil :background "#f9f2d9")))
 (set-frame-font "DejaVu Sans Mono" nil t)
-(set-face-attribute 'default nil :family "DejaVu Sans Mono" :height 45)
+(set-face-attribute 'default nil :family "DejaVu Sans Mono" :height 95)
 
 ;; Sentences end with a single space
 
@@ -175,7 +203,6 @@
   :ensure t
   :config (magithub-feature-autoinject t))
 
-
 (use-package multi-term)
 (use-package beacon
 	:ensure t
@@ -186,3 +213,5 @@
 
 ;; Docker
 (use-package docker :ensure t)
+;; Recompile everything
+; (byte-recompile-directory package-user-dir nil 'force)

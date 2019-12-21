@@ -3,17 +3,17 @@
 /*~
 /#*
 
+/*
+/.ssh/id_rsa
 /.cache
 /.config/*
-!/.config/i3/
 /.emacs.d/*
+!/.config/i3/
 !/.emacs.d/init.el
 !/.emacs.d/custom-settings.el
-/*
 !/scripts
 !/bin
 !/.ssh/
-/.ssh/id_rsa
 !/.emacs
 !/.Xdefautls
 !/.Xresources

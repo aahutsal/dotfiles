@@ -15,13 +15,22 @@ Xft.hintstyle:              hintslight
 ! http://pod.tst.eu/http://cvs.schmorp.de/rxvt-unicode/doc/rxvt.1.pod
 !-------------------------------------------------------------------------------
 
-URxvt.depth:                32
+URxvt.background:           #002b36
 URxvt.geometry:             90x30
+
+! Real transparency
+urxvt*depth: 32
+! urxvt*background: rgba:0000/0000/0200/c800
+
+! Fake transparency
 URxvt.transparent:          false
-URxvt.inheritPixmap: false
+! URxvt.shading:              0
+! URxvt.fading:               0
+
+URxvt.inheritPixmap:        false
 
 
-URxvt.fading:               0
+
 ! URxvt.urgentOnBell:         true
 ! URxvt.visualBell:           true
 URxvt.loginShell:           true
@@ -31,9 +40,9 @@ URxvt.lineSpace:            0
 
 ! Fonts
 URxvt.allow_bold:           false
-/* URxvt.font:                 -*-terminus-medium-r-normal-*-12-120-72-72-c-60-iso8859-1 */
-URxvt*font: xft:Monospace:pixelsize=14
-URxvt*boldFont: xft:Monospace:pixelsize=14
+! URxvt.font:                 -*-terminus-medium-r-normal-*-12-120-72-72-c-60-iso8859-1 
+URxvt*font: xft:Monospace:pixelsize=12
+URxvt*boldFont: xft:Monospace:pixelsize=12
 
 ! Fix font space
 URxvt*letterSpace: -1
@@ -43,7 +52,9 @@ URxvt.scrollStyle:          rxvt
 URxvt.scrollBar:            false
 
 ! Perl extensions
-URxvt.perl-ext-common:      default,matcher
+URxvt.perl-ext-common:      default,matcher,solarized
+URxvt.keysym.Mod4-c:        perl:solarized:toggle
+URxvt.solarized.default:    light
 URxvt.matcher.button:       1
 URxvt.urlLauncher:          firefox
 
