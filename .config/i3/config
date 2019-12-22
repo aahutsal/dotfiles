@@ -310,8 +310,10 @@ hide_edge_borders smart_no_gaps
 # workspace 0 gaps outer 5
 
 for_window [ class="^InputOutput" title="^Android"] border pixel
-# for_window [ class="^Opera"] border pixel
-# for_window [ class="^URxvt$" ] border pixel
+for_window [ class="^mail.google.com"] border 5
+for_window [ instance="calendar.google.com" ] move container to workspace 2; workspace 2
+for_window [ instance="mail.google.com" ] move container to workspace 2; workspace 2
+
 # for_window [ class="^skype$" ] border pixel
 
 # # Start applications
