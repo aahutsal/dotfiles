@@ -14,11 +14,12 @@ There are two things you can do about this warning:
 1. Install an Emacs version that does support SSL and be safe.
 2. Remove this warning from your init file so you won't see it again."))
   ;; Comment/uncomment these two lines to enable/disable MELPA and MELPA Stable as desired
-;;  (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
-  (add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
+  ;; (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
+	  (add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
   (when (< emacs-major-version 24)
     ;; For important compatibility libraries like cl-lib
-    (add-to-list 'package-archives (cons "gnu" (concat proto "://elpa.gnu.org/packages/")))))
+;;    (add-to-list 'package-archives (cons "gnu" (concat proto "://elpa.gnu.org/packages/")))
+    ))
 (package-initialize)
 (setq use-package-always-ensure t)
 (add-to-list 'load-path "/usr/local/share/emacs/site-lisp")
@@ -60,7 +61,8 @@ There are two things you can do about this warning:
 
 ;; Loading/defining 'use-package
 (unless (package-installed-p 'use-package)
-  (package-install 'use-package))
+  (package-install 'use-package)
+  )
 (setq use-package-verbose t)
 (setq use-package-always-ensure t)
 (require 'use-package)
@@ -186,8 +188,8 @@ There are two things you can do about this warning:
 		(set-face-attribute 'mode-line          nil :box        nil)
 		(set-face-attribute 'mode-line-inactive nil :box        nil)
 		(set-face-attribute 'mode-line-inactive nil :background "#f9f2d9")))
-(set-frame-font "Droid Sans Mono" nil t)
-(set-face-attribute 'default nil :family "Droid Sans Mono" :height 95)
+(set-frame-font "DejaVu Sans Mono" nil t)
+(set-face-attribute 'default nil :family "DejaVu Sans Mono" :height 95)
 
 ;; Sentences end with a single space
 
@@ -214,4 +216,4 @@ There are two things you can do about this warning:
 ;; Docker
 (use-package docker :ensure t)
 ;; Recompile everything
-; (byte-recompile-directory package-user-dir nil 'force)
+(byte-recompile-directory package-user-dir nil 'force)

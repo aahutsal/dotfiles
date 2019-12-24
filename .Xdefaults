@@ -41,8 +41,8 @@ URxvt.lineSpace:            0
 ! Fonts
 URxvt.allow_bold:           false
 ! URxvt.font:                 -*-terminus-medium-r-normal-*-12-120-72-72-c-60-iso8859-1 
-URxvt*font: xft:Droid Sans Mono:pixelsize=12
-URxvt*boldFont: xft:Droid Sans Mono:pixelsize=12
+URxvt*font: xft:DejaVu Sans Mono:pixelsize=12
+URxvt*boldFont: xft:DejaVu Sans Mono:pixelsize=12
 
 ! Fix font space
 URxvt*letterSpace: -1
