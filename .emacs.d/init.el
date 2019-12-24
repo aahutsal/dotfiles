@@ -186,8 +186,8 @@ There are two things you can do about this warning:
 		(set-face-attribute 'mode-line          nil :box        nil)
 		(set-face-attribute 'mode-line-inactive nil :box        nil)
 		(set-face-attribute 'mode-line-inactive nil :background "#f9f2d9")))
-(set-frame-font "DejaVu Sans Mono" nil t)
-(set-face-attribute 'default nil :family "DejaVu Sans Mono" :height 95)
+(set-frame-font "Droid Sans Mono" nil t)
+(set-face-attribute 'default nil :family "Droid Sans Mono" :height 95)
 
 ;; Sentences end with a single space
 
