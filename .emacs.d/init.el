@@ -23,12 +23,12 @@ There are two things you can do about this warning:
 (setq use-package-always-ensure t)
 (add-to-list 'load-path "/usr/local/share/emacs/site-lisp")
 
-(add-to-list 'load-path "~/.emacs.d/emacs-for-clojure")
-(add-to-list 'load-path "~/.emacs.d/emacs-for-clojure/customizations")
+;; (add-to-list 'load-path "~/.emacs.d/emacs-for-clojure")
+;; (add-to-list 'load-path "~/.emacs.d/emacs-for-clojure/customizations")
 
-(add-to-list 'load-path "~/.emacs.d/emacs-for-clojure/themes")
-(add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-for-clojure/themes")
-(load "~/.emacs.d/emacs-for-clojure/init.el")
+;; (add-to-list 'load-path "~/.emacs.d/emacs-for-clojure/themes")
+;; (add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-for-clojure/themes")
+;; (load "~/.emacs.d/emacs-for-clojure/init.el")
 
 
 (setq custom-file "~/.emacs.d/custom-settings.el")
