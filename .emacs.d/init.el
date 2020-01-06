@@ -215,5 +215,6 @@ There are two things you can do about this warning:
 
 ;; Docker
 (use-package docker :ensure t)
+
 ;; Recompile everything
-(byte-recompile-directory package-user-dir nil 'force)
+;; (byte-recompile-directory package-user-dir nil 'force)
