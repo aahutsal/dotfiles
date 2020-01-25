@@ -201,7 +201,7 @@ There are two things you can do about this warning:
 ;; Magithub
 
 (use-package magit
-	:config (global-set-key (kbd "C-x x") 'magit))
+	:config (global-set-key (kbd "C-x C-a") 'magit))
 (use-package magithub
   :after magit
   :ensure t
