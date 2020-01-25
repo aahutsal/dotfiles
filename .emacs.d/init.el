@@ -225,9 +225,11 @@ There are two things you can do about this warning:
 (use-package yasnippet-snippets
 	:ensure t)
 
-
 ;; NodeJS REPL
 (use-package nodejs-repl :ensure t)
+
+;; TypeScript development
+(use-package typescript-mode)
 
 ;; Recompile everything
 ;; (byte-recompile-directory package-user-dir nil 'force)
