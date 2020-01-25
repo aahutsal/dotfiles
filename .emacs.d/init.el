@@ -208,7 +208,7 @@ There are two things you can do about this warning:
   :config (do
 							(magithub-feature-autoinject t)
 							(global-set-key (kbd "C-x g") 'magithub)
-							)
+						))
 
 (use-package multi-term)
 (use-package beacon
@@ -223,6 +223,9 @@ There are two things you can do about this warning:
 
 ;; Yasnippet
 (use-package yasnippet :ensure t)
+
+;; NodeJS REPL
+(use-package nodejs-repl :ensure t)
 
 ;; Recompile everything
 ;; (byte-recompile-directory package-user-dir nil 'force)
