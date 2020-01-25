@@ -23,6 +23,7 @@
 !/.tmux.conf
 !/.bashrc
 !/.zshrc
+!/.xxkbrc
 !/.gitignore
 /.emacs.d/custom-settings.el
 /.ssh/known_hosts
