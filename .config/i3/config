@@ -256,9 +256,10 @@ workspace 10 output DVI-D-0
 
 workspace_auto_back_and_forth no
 
-exec source ~/.xinitrc
+#exec source ~/.xinitrc
 
 exec xset r rate 200 25 # setting kbd rate
+
 #exec i3-msg 'workspace 1;exec google-chrome-stable --force-device-scale-factor=1' # workaround fonts
 #exec i3-msg 'workspace 1;exec google-chrome-stable --app=http://www.tomato.es --force-device-scale-factor=1;'
 #exec i3-msg 'exec sleep 2;floating toggle;move scratchpad;' # workaround font
@@ -330,6 +331,7 @@ for_window [ instance="mail.google.com" ] move container to workspace 2; workspa
 # exec urxvt -name "dev3" -e emacsclient -c -t
 # exec urxvt -pe tabbed -name dev4
 # exec urxvt -pe tabbed -name dev5
+# exec --no-startup-id sudo NetworkManager
 exec --no-startup-id ~/.config/i3/update_background
 exec --no-startup-id /usr/libexec/mate-settings-daemon
 exec --no-startup-id nm-applet
