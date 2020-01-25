@@ -222,7 +222,9 @@ There are two things you can do about this warning:
 (use-package docker :ensure t)
 
 ;; Yasnippet
-(use-package yasnippet :ensure t)
+(use-package yasnippet-snippets
+	:ensure t)
+
 
 ;; NodeJS REPL
 (use-package nodejs-repl :ensure t)
