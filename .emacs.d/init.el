@@ -206,7 +206,7 @@ There are two things you can do about this warning:
   :after magit
   :ensure t
   :config (do
-							(magithub-feature-autoinject t)
+							(magithub-feature-autoinject all)
 							(global-set-key (kbd "C-x g") 'magithub)
 						))
 
