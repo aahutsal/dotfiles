@@ -10,6 +10,7 @@
 /.emacs.d/*
 !/.config/i3/*
 !/.config/systemd/*
+!/.config/terminator
 !/.emacs.d/init.el
 !/.emacs.d/custom-settings.el
 !/scripts
