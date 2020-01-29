@@ -227,6 +227,21 @@ There are two things you can do about this warning:
 
 ;; NodeJS REPL
 (use-package nodejs-repl :ensure t)
+(add-hook 'js-mode-hook
+					(lambda ()
+						(define-key js-mode-map (kbd "C-x C-e") 'nodejs-repl-send-last-expression)
+						(define-key js-mode-map (kbd "C-c C-r") 'nodejs-repl-send-region)
+						(define-key js-mode-map (kbd "C-c C-l") 'nodejs-repl-send-line)
+						(define-key js-mode-map (kbd "C-c C-f") 'nodejs-repl-load-file)
+						(define-key js-mode-map (kbd "C-c C-z") 'nodejs-repl-switch-to-repl)))
+(require 'simple)
+(require 'nodejs-repl)
+(defun nvm-which ()
+  (let (output (shell-command-to-string "source ~/.nvm/nvm.sh;
+  nvm which current"))
+    (cadr (split-string output "[\n]+" t))))
+(setq nodejs-repl-command #'nvm-which)
+
 
 ;; TypeScript development
 (use-package typescript-mode)
