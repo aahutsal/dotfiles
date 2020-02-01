@@ -256,6 +256,11 @@ There are two things you can do about this warning:
               (local-set-key (kbd "C-c C-b") 'ts-send-buffer-and-go)
               (local-set-key (kbd "C-c l") 'ts-load-file-and-go)))
 
+(use-package tide
+  :ensure t
+  :config
+  (tide-setup))
+
 
 ;; Recompile everything
 ;; (byte-recompile-directory package-user-dir nil 'force)
