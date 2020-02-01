@@ -93,7 +93,9 @@ There are two things you can do about this warning:
 (setq auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
 
 
-(use-package w3m :ensure t :config (global-set-key (kbd "C-x w s") 'w3m-search))
+(use-package w3m :ensure t)
+(global-set-key (kbd "C-x w s") 'w3m-search)
+
 ;; History
 
 ; From http://www.wisdomandwonder.com/wp-content/uploads/2014/03/C3F.html:
@@ -200,15 +202,15 @@ There are two things you can do about this warning:
 
 ;; Magithub
 
-(use-package magit
-	:config (global-set-key (kbd "C-x C-a") 'magit))
+(use-package magit)
+(global-set-key (kbd "C-x C-a") 'magit)
+
 (use-package magithub
   :after magit
   :ensure t
-  :config (do
-							(magithub-feature-autoinject all)
-							(global-set-key (kbd "C-x g") 'magithub)
-						))
+  :config (magithub-feature-autoinject 'all))
+
+(global-set-key (kbd "C-x g") 'magithub)
 
 (use-package multi-term)
 (use-package beacon
@@ -237,9 +239,8 @@ There are two things you can do about this warning:
 (require 'simple)
 (require 'nodejs-repl)
 (defun nvm-which ()
-  (let (output (shell-command-to-string "source ~/.nvm/nvm.sh;
-  nvm which current"))
-    (cadr (split-string output "[\n]+" t))))
+	(string-trim-right (shell-command-to-string "source ~/.nvm/nvm.sh;
+  nvm which current")))
 (setq nodejs-repl-command #'nvm-which)
 
 
