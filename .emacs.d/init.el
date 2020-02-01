@@ -246,6 +246,16 @@ There are two things you can do about this warning:
 
 ;; TypeScript development
 (use-package typescript-mode)
+(use-package ts-comint)
+  (add-hook 'typescript-mode-hook
+            (lambda ()
+              (local-set-key (kbd "C-x C-e") 'ts-send-last-sexp)
+              (local-set-key (kbd "C-M-x") 'ts-send-last-sexp-and-go)
+              (local-set-key (kbd "C-c b") 'ts-send-buffer)
+							(local-set-key (kbd "C-c C-r") 'ts-send-region)
+              (local-set-key (kbd "C-c C-b") 'ts-send-buffer-and-go)
+              (local-set-key (kbd "C-c l") 'ts-load-file-and-go)))
+
 
 ;; Recompile everything
 ;; (byte-recompile-directory package-user-dir nil 'force)
