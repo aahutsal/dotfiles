@@ -2,7 +2,7 @@
 		"ImageId": "ami-0a06dab8a434a6400",
 		"KeyName": "softsky",
 		"SecurityGroupIds": [ "sg-3eaa4f5b" ],
-		"InstanceType": "g4dn.2xlarge",
+		"InstanceType": "t3a.medium",
 		"Placement": {
 				"AvailabilityZone": "eu-central-1b"
 		}
