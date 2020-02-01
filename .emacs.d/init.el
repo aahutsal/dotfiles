@@ -93,7 +93,9 @@ There are two things you can do about this warning:
 (setq auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
 
 
-(use-package w3m :ensure t :config (global-set-key (kbd "C-x w s") 'w3m-search))
+(use-package w3m :ensure t)
+(global-set-key (kbd "C-x w s") 'w3m-search)
+
 ;; History
 
 ; From http://www.wisdomandwonder.com/wp-content/uploads/2014/03/C3F.html:
@@ -200,15 +202,15 @@ There are two things you can do about this warning:
 
 ;; Magithub
 
-(use-package magit
-	:config (global-set-key (kbd "C-x C-a") 'magit))
+(use-package magit)
+(global-set-key (kbd "C-x C-a") 'magit)
+
 (use-package magithub
   :after magit
   :ensure t
-  :config (do
-							(magithub-feature-autoinject all)
-							(global-set-key (kbd "C-x g") 'magithub)
-						))
+  :config (magithub-feature-autoinject 'all))
+
+(global-set-key (kbd "C-x g") 'magithub)
 
 (use-package multi-term)
 (use-package beacon
@@ -237,14 +239,23 @@ There are two things you can do about this warning:
 (require 'simple)
 (require 'nodejs-repl)
 (defun nvm-which ()
-  (let (output (shell-command-to-string "source ~/.nvm/nvm.sh;
-  nvm which current"))
-    (cadr (split-string output "[\n]+" t))))
+	(string-trim-right (shell-command-to-string "source ~/.nvm/nvm.sh;
+  nvm which current")))
 (setq nodejs-repl-command #'nvm-which)
 
 
 ;; TypeScript development
 (use-package typescript-mode)
+(use-package ts-comint)
+  (add-hook 'typescript-mode-hook
+            (lambda ()
+              (local-set-key (kbd "C-x C-e") 'ts-send-last-sexp)
+              (local-set-key (kbd "C-M-x") 'ts-send-last-sexp-and-go)
+              (local-set-key (kbd "C-c b") 'ts-send-buffer)
+							(local-set-key (kbd "C-c C-r") 'ts-send-region)
+              (local-set-key (kbd "C-c C-b") 'ts-send-buffer-and-go)
+              (local-set-key (kbd "C-c l") 'ts-load-file-and-go)))
+
 
 ;; Recompile everything
 ;; (byte-recompile-directory package-user-dir nil 'force)
