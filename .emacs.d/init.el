@@ -261,7 +261,8 @@ There are two things you can do about this warning:
   :config
   (tide-setup))
 
-
+(use-package editorconfig
+  :ensure t)
 ;; Recompile everything
 ;; (byte-recompile-directory package-user-dir nil 'force)
 
