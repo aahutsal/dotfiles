@@ -1,0 +1,46 @@
+#!/bin/sh
+
+COMMAND=$1
+echo $COMMAND
+case $COMMAND in
+    start)
+				if [ "x${AWS_INSTANCE_ID}" != "x" ]; then
+						echo "Seems ${AWS_INSTANCE_ID} is still running,"
+						echo "If not, please unset AWS_INSTANCE_ID variable. Exitting..."
+						break;
+				fi
+				# Launching Spot Instance
+        aws ec2 request-spot-instances --instance-count=1 --launch-specification file:///home/archer/bin/Specification.json;
+				export AWS_INSTANCE=$(aws ec2 describe-instances)
+				# preparing config
+				AWS_INSTANCE_ID=$(echo $AWS_INSTANCE|jq ".Reservations[0].Instances[0].InstanceId")
+				# Stripping quotes
+				AWS_INSTANCE_ID=${AWS_INSTANCE_ID%\"};
+				AWS_INSTANCE_ID=${AWS_INSTANCE_ID#\"};
+				export AWS_INSTANCE_ID
+				
+				AWS_INSTANCE_PUBLIC_DNS_NAME=$(echo $AWS_INSTANCE|jq ".Reservations[0].Instances[0].PublicDnsName")
+				AWS_INSTANCE_PUBLIC_DNS_NAME=${AWS_INSTANCE_PUBLIC_DNS_NAME%\"};
+				AWS_INSTANCE_PUBLIC_DNS_NAME=${AWS_INSTANCE_PUBLIC_DNS_NAME#\"};
+				export AWS_INSTANCE_PUBLIC_DNS_NAME
+
+				# launching OpenVPN
+				# Copying from template
+				rm ~/gai-home.ovpn;cp ~/gai-home.ovpn.template ~/gai-home.ovpn
+				echo remote $AWS_INSTANCE_PUBLIC_DNS_NAME 1194 >> ~/gai-home.ovpn
+				# launching
+	      sudo openvpn --config ~/gai-home.ovpn 2>&1 >> ~/openvpn.log &
+				export OPENVPN_GAI_CLIENT_PID=$$
+				echo "OpenVPN client started, PID=${OPENVPN_GAI_CLIENT_PID}"
+        ;;
+    stop)
+        echo "Terminating Spot Instance ${AWS_INSTANCE_ID}"
+				aws ec2 terminate-instances --instance-ids=${AWS_INSTANCE_ID}
+				export AWS_INSTANCE_ID=
+				kill ${OPENVPN_GAI_CLIENT_PID}
+        break
+        ;;
+    *)
+        echo "Sorry, I don't understand"
+        ;;
+esac
