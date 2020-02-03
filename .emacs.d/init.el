@@ -264,3 +264,6 @@ There are two things you can do about this warning:
 
 ;; Recompile everything
 ;; (byte-recompile-directory package-user-dir nil 'force)
+
+;; Setting exec-path
+;; (setq exec-path (append exec-path '("~/.nvm/versions/node/v13.7.0/bin")))
