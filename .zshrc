@@ -99,6 +99,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias godev="ssh ubuntu@dev"
 alias gofprx="ssh ubuntu@fprx -i ~/dev/fairpricerx-virginia.pem"
+alias ed="emacsclient -ct"
 
 export NVM_DIR="${HOME}/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
