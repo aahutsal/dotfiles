@@ -192,7 +192,7 @@ There are two things you can do about this warning:
 		(set-face-attribute 'mode-line-inactive nil :box        nil)
 		(set-face-attribute 'mode-line-inactive nil :background "#f9f2d9")))
 (set-frame-font "DejaVu Sans Mono" nil t)
-(set-face-attribute 'default nil :family "DejaVu Sans Mono" :height 95)
+(set-face-attribute 'default nil :family "DejaVu Sans Mono" :height 84)
 
 ;; Sentences end with a single space
 
@@ -265,3 +265,6 @@ There are two things you can do about this warning:
   :ensure t)
 ;; Recompile everything
 ;; (byte-recompile-directory package-user-dir nil 'force)
+
+;; Setting exec-path
+;; (setq exec-path (append exec-path '("~/.nvm/versions/node/v13.7.0/bin")))
