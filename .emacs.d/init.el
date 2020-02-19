@@ -210,8 +210,6 @@ There are two things you can do about this warning:
   :ensure t
   :config (magithub-feature-autoinject 'all))
 
-(global-set-key (kbd "C-x g") 'magithub)
-
 (use-package multi-term)
 (use-package beacon
 	:ensure t
