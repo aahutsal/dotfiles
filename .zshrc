@@ -102,5 +102,6 @@ alias gofprx="ssh ubuntu@fprx -i ~/dev/fairpricerx-virginia.pem"
 alias ed="emacsclient -ct"
 alias emw="sudo emerge --sync && sudo emerge -vuDN world"
 
+export PATH=$PATH:$HOME/bin
 export NVM_DIR="${HOME}/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
