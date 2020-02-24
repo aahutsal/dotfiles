@@ -1,5 +1,6 @@
 #!/bin/sh
 
+ALLOCATION_ID=eipalloc-08c3aef06cfc32317
 COMMAND=$1
 echo $COMMAND
 case $COMMAND in
@@ -19,17 +20,13 @@ case $COMMAND in
 				AWS_INSTANCE_ID=${AWS_INSTANCE_ID#\"};
 				export AWS_INSTANCE_ID
 				
-				AWS_INSTANCE_PUBLIC_DNS_NAME=$(echo $AWS_INSTANCE|jq ".Reservations[0].Instances[0].PublicDnsName")
-				AWS_INSTANCE_PUBLIC_DNS_NAME=${AWS_INSTANCE_PUBLIC_DNS_NAME%\"};
-				AWS_INSTANCE_PUBLIC_DNS_NAME=${AWS_INSTANCE_PUBLIC_DNS_NAME#\"};
-				export AWS_INSTANCE_PUBLIC_DNS_NAME
-
+				aws ec2 associate-address --instance-id=$AWS_INSTANCE_ID --allocation-id=$ALLOCATION_ID
 				# launching OpenVPN
 				# Copying from template
-				rm ~/gai-home.ovpn;cp ~/gai-home.ovpn.template ~/gai-home.ovpn
-				echo remote $AWS_INSTANCE_PUBLIC_DNS_NAME 1194 >> ~/gai-home.ovpn
+				#rm ~/gai-home.ovpn;cp ~/gai-home.ovpn.template ~/gai-home.ovpn
+				#echo remote $AWS_INSTANCE_PUBLIC_DNS_NAME 1194 >> ~/gai-home.ovpn
 				# launching
-	      sudo openvpn --config ~/gai-home.ovpn 2>&1 >> ~/openvpn.log &
+				sudo openvpn --config ~/gai-home.ovpn 2>&1 >> ~/openvpn.log &
 				export OPENVPN_GAI_CLIENT_PID=$$
 				echo "OpenVPN client started, PID=${OPENVPN_GAI_CLIENT_PID}"
         ;;
