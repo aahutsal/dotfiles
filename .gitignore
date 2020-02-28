@@ -30,3 +30,4 @@
 /.ssh/known_hosts
 /.ssh/authorized_keys
 /bin/.*
+!/.travis.yml

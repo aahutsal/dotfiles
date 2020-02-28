@@ -68,7 +68,7 @@ ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git aws)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -97,6 +97,11 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias godev="ssh ubuntu@dev"
+alias gofprx="ssh ubuntu@fprx -i ~/dev/fairpricerx-virginia.pem"
+alias ed="emacsclient -ct"
+alias emw="sudo emerge --sync && sudo emerge -vuDN world"
 
+export PATH=$PATH:$HOME/bin
 export NVM_DIR="${HOME}/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
