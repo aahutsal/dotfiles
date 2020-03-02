@@ -19,6 +19,11 @@ case $COMMAND in
 				AWS_INSTANCE_ID=${AWS_INSTANCE_ID#\"};
 				export AWS_INSTANCE_ID
 
+				AWS_INSTANCE_PUBLIC_DNS_NAME=$(echo $AWS_INSTANCE|jq ".Reservations[0].Instances[0].PublicDnsName")
+				AWS_INSTANCE_PUBLIC_DNS_NAME=${AWS_INSTANCE_PUBLIC_DNS_NAME%\"};
+				AWS_INSTANCE_PUBLIC_DNS_NAME=${AWS_INSTANCE_PUBLIC_DNS_NAME#\"};
+				export AWS_INSTANCE_PUBLIC_DNS_NAME
+
 				# launching OpenVPN
 				# Copying from template
 				rm ~/gai-home.ovpn;cp ~/gai-home.ovpn.template ~/gai-home.ovpn
