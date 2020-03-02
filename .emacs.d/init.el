@@ -92,7 +92,6 @@ There are two things you can do about this warning:
 (setq auto-save-default -1)
 (setq auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
 
-
 (use-package w3m :ensure t)
 (global-set-key (kbd "C-x w s") 'w3m-search)
 
@@ -199,6 +198,16 @@ There are two things you can do about this warning:
 ;In my world, sentences end with a single space. This makes sentence navigation commands work for me.
 
 (setq sentence-end-double-space nil)
+
+(require 'ob-plantuml)
+(setq org-plantuml-jar-path "/usr/share/plantuml/plantuml.jar")
+
+;; Graphviz dot
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((dot . t))) ; this line activates dot
+
+
 
 ;; Magithub
 
