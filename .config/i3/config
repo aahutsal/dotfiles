@@ -197,7 +197,8 @@ bar {
 	# i3bar position
 	position top
 	# Using custom i3status.conf
-	status_command sh -c 'i3status -c ~/.config/i3/i3status.conf|~/bin/i3status-netusage --interface=enp1s0'
+	# status_command sh -c 'i3status -c ~/.config/i3/i3status.conf|~/bin/i3status-netusage --interface=enp1s0'
+	 status_command sh -c 'i3status -c ~/.config/i3/i3status.conf'
 #        status_command i3status
 }
 
