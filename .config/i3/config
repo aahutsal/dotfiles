@@ -56,7 +56,7 @@ bindsym $mod+o exec vglconnect 192.168.0.125 -XYCt -R 4713:localhost:4713 PULSE_
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -fn 'pango:Droid Sans Mono:pixelsize=18' -i -p 'Gentoo Linux'"
+bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -fn 'pango:Droid Sans Mono:pixelsize=18' -i -p 'Gentoo Linux'"
 
 # change focus
 bindsym $mod+j focus left
@@ -333,9 +333,10 @@ for_window [ instance="mail.google.com" ] move container to workspace 2; workspa
 # exec urxvt -pe tabbed -name dev4
 # exec urxvt -pe tabbed -name dev5
 # exec --no-startup-id sudo NetworkManager
+exec --no-startup-id xxkb
 exec --no-startup-id ~/.config/i3/update_background
 exec --no-startup-id /usr/libexec/mate-settings-daemon
-exec --no-startup-id nm-applet
-exec --no-startup-id mate-power-manager 
+# exec --no-startup-id nm-applet
+# exec --no-startup-id mate-power-manager 
 # exec --no-startup-id blueman-applet
 # exec --no-startup-id compton 
