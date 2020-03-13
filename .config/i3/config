@@ -40,6 +40,7 @@ floating_modifier $mod
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Return exec terminator -e tmux
+bindsym $mod+Shift+Return exec terminator -e "tmux attach"
 
 # kill focused window
 bindsym --release $mod+Shift+w kill
@@ -335,8 +336,8 @@ for_window [ instance="mail.google.com" ] move container to workspace 2; workspa
 # exec --no-startup-id sudo NetworkManager
 exec --no-startup-id xxkb
 exec --no-startup-id ~/.config/i3/update_background
-exec --no-startup-id /usr/libexec/mate-settings-daemon
+# exec --no-startup-id /usr/libexec/mate-settings-daemon
 # exec --no-startup-id nm-applet
-# exec --no-startup-id mate-power-manager 
-# exec --no-startup-id blueman-applet
-# exec --no-startup-id compton 
+# exec --no-startup-id mate-power-manager
+exec --no-startup-id blueman-applet
+exec --no-startup-id compton 
