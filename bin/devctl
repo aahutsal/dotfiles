@@ -29,7 +29,7 @@ case $COMMAND in
 				rm ~/gai-home.ovpn;cp ~/gai-home.ovpn.template ~/gai-home.ovpn
 				echo remote $AWS_INSTANCE_PUBLIC_DNS_NAME 1194 >> ~/gai-home.ovpn
 				# launching
-				sudo openvpn --config ~/gai-home.ovpn 2>&1 >> ~/openvpn.log &
+				sudo openvpn --config ~/gai-home.ovpn --up-delay --ping 5 2>&1 >> ~/openvpn.log &
 				export OPENVPN_GAI_CLIENT_PID=$$
 				echo "OpenVPN client started, PID=${OPENVPN_GAI_CLIENT_PID}"
         ;;
