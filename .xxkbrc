@@ -25,7 +25,7 @@ XXkb.*.label.enable: no
 XXkb.mainwindow.type: tray
 ! possible values - normal, top, tray, wmaker
 
-XXkb.button.enable: yes
+XXkb.button.enable: no
 XXkb.button.geometry: 15x15-60+7
 XXkb.button.image.1: en15.xpm
 XXkb.button.image.2: ua15.xpm
@@ -45,7 +45,7 @@ XXkb.mousebutton.1.reverse: no
 XXkb.mousebutton.3.reverse: no
 
 XXkb.bell.enable: no
-XXkb.bell.percent: -50
+XXkb.bell.p
 
 XXkb.ignore.reverse: no
 
