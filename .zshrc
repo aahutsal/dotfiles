@@ -101,6 +101,13 @@ alias godev="ssh ubuntu@dev"
 alias gofprx="ssh ubuntu@fprx -i ~/dev/fairpricerx-virginia.pem"
 alias ed="emacsclient -ct"
 alias emw="sudo emerge --sync && sudo emerge -vuDN world"
+alias gdl='google docs list'
+gde() {
+    google docs edit --title "$@"
+}
+
+export EDITOR="emacsclient -ct"
+
 
 export PATH=$PATH:$HOME/bin
 export NVM_DIR="${HOME}/.nvm"
