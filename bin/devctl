@@ -10,7 +10,7 @@ case $COMMAND in
 						break;
 				fi
 				# Launching Spot Instance
-        aws ec2 request-spot-instances --instance-count=1 --launch-specification file:///home/archer/bin/Specification.json;
+        aws ec2 request-spot-instances --instance-count=1 --launch-specification file:///home/archer/bin/Specification.json >/dev/null
 				export AWS_INSTANCE=$(aws ec2 describe-instances)
 				# preparing config
 				AWS_INSTANCE_ID=$(echo $AWS_INSTANCE|jq ".Reservations[0].Instances[0].InstanceId")
