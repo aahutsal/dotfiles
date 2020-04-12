@@ -1,5 +1,5 @@
 {
-		"ImageId": "ami-094366828ae23bd06",
+		"ImageId": 	"ami-0466460e99e2150a2",
 		"KeyName": "softsky",
 		"SecurityGroupIds": [ "sg-3eaa4f5b" ],
 		"InstanceType": "t3a.medium",
