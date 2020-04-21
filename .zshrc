@@ -98,3 +98,7 @@ export ARCHFLAGS="-arch x86_64"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias godev="ssh ubuntu@dev"
+alias gofprx="ssh ubuntu@fprx -i ~/dev/fairpricerx-virginia.pem"
+alias ed="emacsclient -ct"
+
