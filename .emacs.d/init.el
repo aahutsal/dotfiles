@@ -61,8 +61,7 @@ There are two things you can do about this warning:
 
 ;; Loading/defining 'use-package
 (unless (package-installed-p 'use-package)
-  (package-install 'use-package)
-  )
+  (package-install 'use-package))
 (setq use-package-verbose t)
 (setq use-package-always-ensure t)
 (require 'use-package)
@@ -276,6 +275,9 @@ There are two things you can do about this warning:
 (use-package dracula-theme
   :ensure t
   :config)
+
+(use-package clojure-mode
+	:ensure t)
 
 (use-package 4clojure
   :ensure t
