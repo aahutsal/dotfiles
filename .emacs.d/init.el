@@ -61,8 +61,7 @@ There are two things you can do about this warning:
 
 ;; Loading/defining 'use-package
 (unless (package-installed-p 'use-package)
-  (package-install 'use-package)
-  )
+  (package-install 'use-package))
 (setq use-package-verbose t)
 (setq use-package-always-ensure t)
 (require 'use-package)
@@ -92,6 +91,8 @@ There are two things you can do about this warning:
 (setq auto-save-default -1)
 (setq auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
 
+(use-package w3m :ensure t)
+(global-set-key (kbd "C-x w s") 'w3m-search)
 
 ;; History
 
@@ -189,7 +190,7 @@ There are two things you can do about this warning:
 		(set-face-attribute 'mode-line-inactive nil :box        nil)
 		(set-face-attribute 'mode-line-inactive nil :background "#f9f2d9")))
 (set-frame-font "DejaVu Sans Mono" nil t)
-(set-face-attribute 'default nil :family "DejaVu Sans Mono" :height 95)
+(set-face-attribute 'default nil :family "DejaVu Sans Mono" :height 84)
 
 ;; Sentences end with a single space
 
@@ -197,13 +198,25 @@ There are two things you can do about this warning:
 
 (setq sentence-end-double-space nil)
 
+(require 'ob-plantuml)
+(setq org-plantuml-jar-path "/usr/share/plantuml/plantuml.jar")
+
+;; Graphviz dot
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((dot . t))) ; this line activates dot
+
+
+
 ;; Magithub
 
 (use-package magit)
+(global-set-key (kbd "C-x C-a") 'magit)
+
 (use-package magithub
   :after magit
   :ensure t
-  :config (magithub-feature-autoinject t))
+  :config (magithub-feature-autoinject 'all))
 
 (use-package multi-term)
 (use-package beacon
@@ -216,5 +229,59 @@ There are two things you can do about this warning:
 ;; Docker
 (use-package docker :ensure t)
 
+;; Yasnippet
+(use-package yasnippet-snippets
+	:ensure t)
+
+;; NodeJS REPL
+(use-package nodejs-repl :ensure t)
+(add-hook 'js-mode-hook
+					(lambda ()
+						(define-key js-mode-map (kbd "C-x C-e") 'nodejs-repl-send-last-expression)
+						(define-key js-mode-map (kbd "C-c C-r") 'nodejs-repl-send-region)
+						(define-key js-mode-map (kbd "C-c C-l") 'nodejs-repl-send-line)
+						(define-key js-mode-map (kbd "C-c C-f") 'nodejs-repl-load-file)
+						(define-key js-mode-map (kbd "C-c C-z") 'nodejs-repl-switch-to-repl)))
+(require 'simple)
+(require 'nodejs-repl)
+(defun nvm-which ()
+	(string-trim-right (shell-command-to-string "source ~/.nvm/nvm.sh;
+  nvm which current")))
+(setq nodejs-repl-command #'nvm-which)
+
+
+;; TypeScript development
+(use-package typescript-mode)
+(use-package ts-comint)
+  (add-hook 'typescript-mode-hook
+            (lambda ()
+              (local-set-key (kbd "C-x C-e") 'ts-send-last-sexp)
+              (local-set-key (kbd "C-M-x") 'ts-send-last-sexp-and-go)
+              (local-set-key (kbd "C-c b") 'ts-send-buffer)
+							(local-set-key (kbd "C-c C-r") 'ts-send-region)
+              (local-set-key (kbd "C-c C-b") 'ts-send-buffer-and-go)
+              (local-set-key (kbd "C-c l") 'ts-load-file-and-go)))
+
+(use-package tide
+  :ensure t
+  :config
+  (tide-setup))
+
+(use-package editorconfig
+  :ensure t)
 ;; Recompile everything
 ;; (byte-recompile-directory package-user-dir nil 'force)
+
+(use-package dracula-theme
+  :ensure t
+  :config)
+
+(use-package clojure-mode
+	:ensure t)
+
+(use-package 4clojure
+  :ensure t
+  :config)
+
+;; Setting exec-path
+;; (setq exec-path (append exec-path '("~/.nvm/versions/node/v13.7.0/bin")))
