@@ -167,7 +167,7 @@ There are two things you can do about this warning:
 
 (tool-bar-mode 0)
 (menu-bar-mode 0)
-(scroll-bar-mode 0)
+;(scroll-bar-mode 0)
 (set-window-scroll-bars (minibuffer-window) nil nil)
 
 ; Use full-path-name of file in window
@@ -189,8 +189,8 @@ There are two things you can do about this warning:
 		(set-face-attribute 'mode-line          nil :box        nil)
 		(set-face-attribute 'mode-line-inactive nil :box        nil)
 		(set-face-attribute 'mode-line-inactive nil :background "#f9f2d9")))
-(set-frame-font "DejaVu Sans Mono" nil t)
-(set-face-attribute 'default nil :family "DejaVu Sans Mono" :height 84)
+(set-frame-font "DejaVu Sans Mono" t)
+(set-face-attribute 'default nil :family "DejaVu Sans Mono" :height 100)
 
 ;; Sentences end with a single space
 
@@ -211,7 +211,7 @@ There are two things you can do about this warning:
 ;; Magithub
 
 (use-package magit)
-(global-set-key (kbd "C-x C-a") 'magit)
+(global-set-key (kbd "C-x C-a C-a") 'magit)
 
 (use-package magithub
   :after magit
@@ -262,10 +262,13 @@ There are two things you can do about this warning:
               (local-set-key (kbd "C-c C-b") 'ts-send-buffer-and-go)
               (local-set-key (kbd "C-c l") 'ts-load-file-and-go)))
 
-(use-package tide
-  :ensure t
-  :config
-  (tide-setup))
+;; Setting exec-path
+(setq exec-path (append exec-path '("~/.config/nvm/versions/node/v12.16.2/bin")))
+
+;; (use-package tide
+;;   :ensure t
+;;   :config
+;;   (tide-setup))
 
 (use-package editorconfig
   :ensure t)
@@ -283,5 +286,14 @@ There are two things you can do about this warning:
   :ensure t
   :config)
 
-;; Setting exec-path
-;; (setq exec-path (append exec-path '("~/.nvm/versions/node/v13.7.0/bin")))
+(use-package company-tabnine 
+  :ensure t)
+
+(add-to-list 'company-backends #'company-tabnine)
+;; Trigger completion immediately.
+(setq company-idle-delay 0)
+
+;; Number the candidates (use M-1, M-2 etc to select completions).
+(setq company-show-numbers t)
+
+
