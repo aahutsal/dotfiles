@@ -103,6 +103,20 @@ alias gofprx="ssh ubuntu@fprx -i ~/dev/fairpricerx-virginia.pem"
 alias ed="emacsclient -c"
 alias trans="docker run -it soimort/translate-shell"
 
+# Put your fun stuff here.
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+   alias ls='ls --color=auto'
+   #alias dir='dir --color=auto'
+   #alias vdir='vdir --color=auto'
+
+   alias grep='grep --color=auto'
+   alias fgrep='fgrep --color=auto'
+   alias egrep='egrep --color=auto'
+fi
+ 
+
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
