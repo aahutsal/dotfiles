@@ -302,3 +302,5 @@ There are two things you can do about this warning:
 (setq company-show-numbers t)
 
 
+(use-package indium
+	:ensure t);
