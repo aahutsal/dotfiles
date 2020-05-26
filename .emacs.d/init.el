@@ -250,8 +250,9 @@ There are two things you can do about this warning:
 (require 'simple)
 (require 'nodejs-repl)
 (defun nvm-which ()
-	(string-trim-right (shell-command-to-string "source ~/.nvm/nvm.sh;
+	(string-trim-right (shell-command-to-string "source ~/.config/nvm/nvm.sh;
   nvm which current")))
+
 (setq nodejs-repl-command #'nvm-which)
 
 
