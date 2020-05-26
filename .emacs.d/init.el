@@ -72,6 +72,11 @@ There are two things you can do about this warning:
 ;; Secrets
 (load "~/.emacs.secrets" t)
 
+;; Edit-server
+(add-to-list 'load-path "~/.emacs.d")
+(use-package edit-server)
+(edit-server-start)
+
 ;; Reload Emacs configuration
 (defun my/reload-emacs-configuration ()
   (interactive)
