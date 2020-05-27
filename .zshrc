@@ -102,7 +102,7 @@ alias godev="ssh ubuntu@dev"
 alias gofprx="ssh ubuntu@fprx -i ~/dev/robot-keys/fairpricerx-virginia.pem"
 alias ed="emacsclient -c"
 alias trans="docker run -it soimort/translate-shell"
-alias t="tmux | tmux attach"
+alias t="tmux attach || tmux"
 
 # Put your fun stuff here.
 # enable color support of ls and also add handy aliases
