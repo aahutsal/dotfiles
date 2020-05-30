@@ -271,10 +271,12 @@ There are two things you can do about this warning:
 ;; Setting exec-path
 (setq exec-path (append exec-path '("~/.config/nvm/versions/node/v12.16.2/bin")))
 
-;; (use-package tide
-;;   :ensure t
-;;   :config
-;;   (tide-setup))
+(use-package tide
+  :ensure t
+  :after (typescript-mode company flycheck)
+  :hook ((typescript-mode . tide-setup)
+         (typescript-mode . tide-hl-identifier-mode)
+         (before-save . tide-format-before-save)))
 
 (use-package editorconfig
   :ensure t)
