@@ -73,7 +73,7 @@ There are two things you can do about this warning:
 (load "~/.emacs.secrets" t)
 
 ;; Edit-server
-(add-to-list 'load-path "~/.emacs.d")
+;; (add-to-list 'load-path "~/.emacs.d")
 (use-package edit-server)
 (edit-server-start)
 
