@@ -1,7 +1,3 @@
-## If your Emacs is installed in a non-standard location, you may need
-## to copy this file to a standard directory, eg ~/.config/systemd/user/ .
-## If you install this file by hand, change the "Exec" lines below
-## to use absolute file names for the executables.
 [Unit]
 Description=Emacs text editor
 Documentation=info:emacs man:emacs(1) https://gnu.org/software/emacs/
@@ -12,8 +8,6 @@ ExecStart=/usr/bin/emacs --daemon
 ExecStop=/usr/bin/emacsclient --eval "(kill-emacs)"
 Environment=SSH_AUTH_SOCK=%t/keyring/ssh
 Restart=on-failure
-PAMName=add_home_bin
 
 [Install]
 WantedBy=default.target
-Alias=emacs.service
