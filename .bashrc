@@ -28,4 +28,3 @@ if [ -x /usr/bin/dircolors ]; then
    alias egrep='egrep --color=auto'
 fi
 
-export PATH=$PATH:$HOME/bin
