@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+
      typescript
      html
      javascript
@@ -338,13 +339,13 @@ you should place your code here."
   ;; Setting exec-path
   (setq exec-path (append exec-path '("~/.config/nvm/versions/node/v12.16.2/bin")))
 
-  (use-package org-starter
-    :custom
-    ;; Enable external config files loaded from org-starter-path
-    (org-starter-load-config-files t))
+  ;; (use-package org-starter
+  ;;   :custom
+  ;;   ;; Enable external config files loaded from org-starter-path
+  ;;   (org-starter-load-config-files t))
 
-  (custom-set-variables
-   '(org-starter-path (quote ("~/org"))))
+  ;; (custom-set-variables
+  ;;  '(org-starter-path (quote ("~/org"))))
 
 
   ;; Beacon
@@ -367,7 +368,6 @@ you should place your code here."
   (define-key yas-minor-mode-map (kbd "<tab>") 'yas-expand)
   (define-key yas-minor-mode-map (kbd "TAB") 'yas-expand)
 
-
   (with-eval-after-load 'org
     (org-babel-do-load-languages
      'org-babel-load-languages '((ruby . t)
@@ -383,6 +383,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(evil-want-Y-yank-to-eol nil)
  '(org-plantuml-jar-path "/usr/share/plantuml/plantuml.jar")
+
  '(org-starter-path (quote ("~/org")))
  '(package-selected-packages
    (quote
