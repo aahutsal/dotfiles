@@ -363,6 +363,9 @@ you should place your code here."
     :after magit
     :ensure t
     :config (magithub-feature-autoinject 'all))
+  ;; YAS
+  (define-key yas-minor-mode-map (kbd "<tab>") 'yas-expand)
+  (define-key yas-minor-mode-map (kbd "TAB") 'yas-expand)
 
   (with-eval-after-load 'org
     (org-babel-do-load-languages

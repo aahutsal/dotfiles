@@ -72,6 +72,7 @@ ZSH_THEME="steeef"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
+[[ -f ~/.profile ]] && . ~/.profile
 
 # User configuration
 
