@@ -72,7 +72,7 @@ ZSH_THEME="steeef"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
-
+[[ -f ~/.profile ]] && . ~/.profile
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
