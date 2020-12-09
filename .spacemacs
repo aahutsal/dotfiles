@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     clojure
      typescript
      html
      javascript
@@ -356,6 +357,10 @@ you should place your code here."
     :config ())
 
   (use-package yasnippet-snippets
+    :ensure t
+    :config ())
+
+  (use-package cider
     :ensure t
     :config ())
 
