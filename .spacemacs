@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     clojure
      typescript
      html
      javascript
@@ -84,6 +85,11 @@ values."
   ;; spacemacs settings.
   (global-set-key (kbd "C-x w s") 'w3m-search)
   (global-set-key (kbd "C-x C-a C-a") 'magit)
+  (defun xxx 
+    (x)
+    "This is xxx defun"
+    (* x x))
+  (xxx 2)
   (setq-default
    ;; If non nil ELPA repositories are contacted via HTTPS whenever it's
    ;; possible. Set it to nil if you have no way to use HTTPS in your
@@ -293,8 +299,8 @@ values."
    ;; specified with an installed package.
    ;; Not used for now. (default nil)
    dotspacemacs-default-package-repository nil
-   ;; Delete whitespace while saving buffer. Possible values are `all'
-   ;; to aggressively delete empty line and long sequences of whitespace,
+   ;; Delete whitespace while saving buffer. Possible values are `all' to
+   ;; aggressively delete empty line and long sequences of whitespace,
    ;; `trailing' to delete only the whitespace at end of lines, `changed'to
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
@@ -347,6 +353,35 @@ you should place your code here."
   ;;  '(org-starter-path (quote ("~/org"))))
 
 
+  (use-package org-projectile
+    :bind (("C-c n p" . org-projectile-project-todo-completing-read)
+           ("C-c c" . org-capture))
+    :config
+    (progn
+      (org-projectile-per-project)
+      (setq org-projectile-per-project-filepath "my_project_todo_filename.org")
+      (setq org-agenda-files (append org-agenda-files (org-projectile-todo-files)))
+      (push (org-projectile-project-todo-entry) org-capture-templates))
+    :ensure t)
+
+  ;; (progn
+  ;;   (org-projectile-per-project)
+  ;;   (setq org-projectile-per-project-filepath "my_project_todo_filename.org")
+  ;;   (setq org-agenda-files (append org-agenda-files (org-projectile-todo-files))))
+
+  (use-package nodejs-repl
+    :ensure t
+    :hook (js-mode-hook js2-mode-hook)
+    :bind (
+
+            ("C-x C-e" . nodejs-repl-send-last-expression)
+            ("C-c C-j" . nodejs-repl-send-line)
+            ("C-c C-r" . nodejs-repl-send-region)
+            ("C-c C-c" . nodejs-repl-send-buffer)
+            ("C-c C-l" . nodejs-repl-load-file)
+            ("C-c C-z" . nodejs-repl-switch-to-repl))
+    :config ())
+
   (use-package editorconfig
     :ensure t
     :config ())
@@ -358,6 +393,15 @@ you should place your code here."
   (use-package yasnippet-snippets
     :ensure t
     :config ())
+
+  (use-package paredit
+    :ensure t
+    :config ())
+
+  (eval-after-load 'paredit
+    '(progn
+       (define-key paredit-mode-map (kbd "ESC M-A-C-s-)")
+         'paredit-dwim)))
 
   ;; ts-comint
   (use-package ts-comint
@@ -376,16 +420,14 @@ you should place your code here."
 	  :config (beacon-mode 1))
 
   ;; Magithub
-  (use-package magit
-    :after beacon
-    :config ( ))
+  (use-package magithub
+    :after magit
+    :config
+    (magithub-feature-autoinject t)
+    (setq magithub-clone-default-directory "~/github"))
 
   (global-set-key (kbd "C-x C-a C-a") 'magit)
 
-  (use-package magithub
-    :after magit
-    :ensure t
-    :config (magithub-feature-autoinject 'all))
   ;; YAS
   (define-key yas-minor-mode-map (kbd "<tab>") 'yas-expand)
   (define-key yas-minor-mode-map (kbd "TAB") 'yas-expand)
@@ -395,10 +437,35 @@ you should place your code here."
      'org-babel-load-languages '((ruby . t)
                                  (plantuml . t)
                                  (java . t)
-                                 ))))
+                                 )))
 
-;; Do not write anything past this comment. This is where Emacs will
-;; auto-generate custom variable definitions.
+  (use-package graphql-mode
+    :ensure t)
+
+  ;; Do not write anything past this comment. This is where Emacs will
+  ;; auto-generate custom variable definitions.
+  (custom-set-variables
+   ;; custom-set-variables was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(evil-want-Y-yank-to-eol nil)
+   '(org-plantuml-jar-path "/usr/share/plantuml/plantuml.jar")
+   '(org-starter-path (quote ("~/org")))
+   '(package-selected-packages
+     (quote
+      (paredit queue sesman 4clojure clojure-snippets inflections parseedn clojure-mode parseclj a cider-eval-sexp-fu clj-refactor elein cider gitter gist ts-comint yassnippet-snippets yassnippets-snippets zones editorconfig-generate jest-test-mode yarn-mode thrift yasnippet-snippets editorconfig tide typescript-mode w3m org-starter tern web-mode tagedit slim-mode scss-mode sass-mode pug-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data magithub beacon company-solidity solidity-flycheck solidity-mode dockerfile-mode docker web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc coffee-mode yaml-mode ripgrep yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc cython-mode company-anaconda anaconda-mode pythonic xterm-color unfill smeargle shell-pop orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mwim multi-term mmm-mode markdown-toc markdown-mode magit-gitflow magit-popup htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit git-commit with-editor transient eshell-z eshell-prompt-extras esh-help diff-hl company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired f evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
+   '(send-mail-function (quote smtpmail-send-it))
+   '(yas-snippet-dirs
+     (quote
+      ("~/.emacs.d/private/snippets/" "~/.emacs.d/layers/+completion/auto-completion/local/snippets" "~/.emacs.d/elpa/yasnippet-20200604.246/snippets")) t)))
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -409,15 +476,8 @@ you should place your code here."
  '(org-starter-path (quote ("~/org")))
  '(package-selected-packages
    (quote
-    (gist ts-comint yassnippet-snippets yassnippets-snippets zones editorconfig-generate jest-test-mode yarn-mode thrift yasnippet-snippets editorconfig tide typescript-mode w3m org-starter tern web-mode tagedit slim-mode scss-mode sass-mode pug-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data magithub beacon company-solidity solidity-flycheck solidity-mode dockerfile-mode docker web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc coffee-mode yaml-mode ripgrep yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc cython-mode company-anaconda anaconda-mode pythonic xterm-color unfill smeargle shell-pop orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mwim multi-term mmm-mode markdown-toc markdown-mode magit-gitflow magit-popup htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit git-commit with-editor transient eshell-z eshell-prompt-extras esh-help diff-hl company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired f evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
+    (docker-tramp graphql-mode nodejs-repl org-projectile-helm paredit queue sesman 4clojure clojure-snippets inflections parseedn clojure-mode parseclj a cider-eval-sexp-fu clj-refactor elein cider gitter gist ts-comint yassnippet-snippets yassnippets-snippets zones editorconfig-generate jest-test-mode yarn-mode thrift yasnippet-snippets editorconfig tide typescript-mode w3m org-starter tern web-mode tagedit slim-mode scss-mode sass-mode pug-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data magithub beacon company-solidity solidity-flycheck solidity-mode dockerfile-mode docker web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc coffee-mode yaml-mode ripgrep yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc cython-mode company-anaconda anaconda-mode pythonic xterm-color unfill smeargle shell-pop orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mwim multi-term mmm-mode markdown-toc markdown-mode magit-gitflow magit-popup htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit git-commit with-editor transient eshell-z eshell-prompt-extras esh-help diff-hl company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired f evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
  '(send-mail-function (quote smtpmail-send-it))
  '(yas-snippet-dirs
    (quote
     ("~/.emacs.d/private/snippets/" "~/.emacs.d/layers/+completion/auto-completion/local/snippets" "~/.emacs.d/elpa/yasnippet-20200604.246/snippets"))))
-
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
