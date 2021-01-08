@@ -103,7 +103,7 @@ alias godev="ssh ubuntu@dev"
 alias gofprx="ssh ubuntu@fprx -i ~/dev/robot-keys/fairpricerx-virginia.pem"
 alias ed="emacsclient -c"
 alias trans="docker run -it soimort/translate-shell"
-alias t="tmux attach || tmux"
+alias t="tmate attach || tmate"
 alias aws-cli="docker run --rm -it amazon/aws-cli"
 
 # Put your fun stuff here.
