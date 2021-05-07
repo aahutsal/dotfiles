@@ -1,6 +1,5 @@
-;; -*- mode: emacs-lisp -*-
-;; This file is loaded by Spacemacs at startup.
-;; It must be stored in your home directory.
+;; -*- mode: emacs-lisp -*- This file is loaded by Spacemacs at startup. It must
+;; be stored in your home directory.
 
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration.
@@ -390,9 +389,21 @@ you should place your code here."
     :ensure t
     :config ())
 
+
+  ;; YAS
   (use-package yasnippet-snippets
     :ensure t
     :config ())
+
+  (define-key yas-minor-mode-map (kbd "<tab>") 'yas-expand)
+  (define-key yas-minor-mode-map (kbd "TAB") 'yas-expand)
+
+  (with-eval-after-load 'org
+    (org-babel-do-load-languages
+     'org-babel-load-languages '((ruby . t)
+                                 (plantuml . t)
+                                 (java . t)
+                                 )))
 
 
   (use-package paredit
@@ -440,16 +451,6 @@ you should place your code here."
   (global-set-key (kbd "C-x C-a C-a") 'magit)
 
   ;; YAS
-  (define-key yas-minor-mode-map (kbd "<tab>") 'yas-expand)
-  (define-key yas-minor-mode-map (kbd "TAB") 'yas-expand)
-
-  (with-eval-after-load 'org
-    (org-babel-do-load-languages
-     'org-babel-load-languages '((ruby . t)
-                                 (plantuml . t)
-                                 (java . t)
-                                 )))
-
   (use-package graphql-mode
     :ensure t)
 
@@ -506,21 +507,17 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
- '(custom-enabled-themes (quote (wombat)))
+ '(custom-enabled-themes '(wombat))
  '(custom-safe-themes
-   (quote
-    ("fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" default)))
+   '("fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" default))
  '(evil-want-Y-yank-to-eol nil)
- '(helm-completion-style (quote emacs))
+ '(helm-completion-style 'emacs)
  '(org-agenda-files
-   (quote
-    ("~/dev/fast-style-transfer/TODO.org" "~/.emacs.d/TODO.org" "~/dev/arbiterria/data-feeder/BitcoinExchangeFH/TODO.org" "~/dev/ethereum-graphql-demo/TODO.org" "~/dev/Maskbook/TODO.org" "~/dev/blockchain/TODO.org" "~/dev/arbiterria/research-lab/arbitrage/crypto-arbitrage/TODO.org" "~/dev/arbiterria/research-lab/arbitrage/cryptools/TODO.org" "~/dev/walletconnect-provider/TODO.org" "~/dev/neo-walletconnect/walletconnect-monorepo/TODO.org" "~/dev/neo-walletconnect/TODO.org" "~/dev/Azbyka_parser/TODO.org" "~/dev/arbiterria/research-lab/TODO.org" "~/dev/arbiterria/arbi/TODO.org" "~/dev/ethql/TODO.org" "~/dev/eip1155-subgraph/TODO.org" "~/dev/eip721-subgraph/TODO.org" "~/example-subgraph/TODO.org" "~/dev/ts-aws-tracking-pixel/TODO.org" "~/dev/arweave-node/TODO.org" "~/dev/arbiterria/research-lab/arbitrage/triangular-arbitrage/TODO.org" "~/dev/arbiterria/research-lab/trading/bitcoin-arbitrage/TODO.org" "~/dev/arbiterria/research-lab/backtesting/backtrader/TODO.org" "~/dev/arbiterria/ccxt/TODO.org" "~/tmp/Compound-Watcher/TODO.org" "~/dev/compound-liquidation/compound-protocol/TODO.org" "~/dev/compound-liquidation/TODO.org" "~/dev/arbiterria/research-lab/arbitrage/peregrine/TODO.org" "~/dev/arbiterria/unicorn-trader/TODO.org" "~/dev/neo-walletconnect/neo-scan-docker/TODO.org" "~/dev/neo-walletconnect/neo-node/TODO.org" "~/dev/puppeteer-robot/TODO.org" "~/dev/api.softsky.company/TODO.org" "~/dev/landing-pages/TODO.org" "~/dev/arbiterria/TODO.org" "~/dev/oahutsal/TicTacToe/TODO.org" "~/dev/pow-blockchain-http/TODO.org" "~/dev/python-crypto-bot/TODO.org" "~/dev/bsc-chitfund/TODO.org" "~/dev/Vainty-BSC/TODO.org" "~/dev/softsky.company/TODO.org" "~/dev/neo-walletconnect/walletconnect-provider/TODO.org" "~/dev/neo-walletconnect/key-management/TODO.org")))
+   '("~/dev/fast-style-transfer/TODO.org" "~/.emacs.d/TODO.org" "~/dev/arbiterria/data-feeder/BitcoinExchangeFH/TODO.org" "~/dev/ethereum-graphql-demo/TODO.org" "~/dev/Maskbook/TODO.org" "~/dev/blockchain/TODO.org" "~/dev/arbiterria/research-lab/arbitrage/crypto-arbitrage/TODO.org" "~/dev/arbiterria/research-lab/arbitrage/cryptools/TODO.org" "~/dev/walletconnect-provider/TODO.org" "~/dev/neo-walletconnect/walletconnect-monorepo/TODO.org" "~/dev/neo-walletconnect/TODO.org" "~/dev/Azbyka_parser/TODO.org" "~/dev/arbiterria/research-lab/TODO.org" "~/dev/arbiterria/arbi/TODO.org" "~/dev/ethql/TODO.org" "~/dev/eip1155-subgraph/TODO.org" "~/dev/eip721-subgraph/TODO.org" "~/example-subgraph/TODO.org" "~/dev/ts-aws-tracking-pixel/TODO.org" "~/dev/arweave-node/TODO.org" "~/dev/arbiterria/research-lab/arbitrage/triangular-arbitrage/TODO.org" "~/dev/arbiterria/research-lab/trading/bitcoin-arbitrage/TODO.org" "~/dev/arbiterria/research-lab/backtesting/backtrader/TODO.org" "~/dev/arbiterria/ccxt/TODO.org" "~/tmp/Compound-Watcher/TODO.org" "~/dev/compound-liquidation/compound-protocol/TODO.org" "~/dev/compound-liquidation/TODO.org" "~/dev/arbiterria/research-lab/arbitrage/peregrine/TODO.org" "~/dev/arbiterria/unicorn-trader/TODO.org" "~/dev/neo-walletconnect/neo-scan-docker/TODO.org" "~/dev/neo-walletconnect/neo-node/TODO.org" "~/dev/puppeteer-robot/TODO.org" "~/dev/api.softsky.company/TODO.org" "~/dev/landing-pages/TODO.org" "~/dev/arbiterria/TODO.org" "~/dev/oahutsal/TicTacToe/TODO.org" "~/dev/pow-blockchain-http/TODO.org" "~/dev/python-crypto-bot/TODO.org" "~/dev/bsc-chitfund/TODO.org" "~/dev/Vainty-BSC/TODO.org" "~/dev/softsky.company/TODO.org" "~/dev/neo-walletconnect/walletconnect-provider/TODO.org" "~/dev/neo-walletconnect/key-management/TODO.org"))
  '(org-plantuml-jar-path "/usr/share/plantuml/plantuml.jar")
- '(org-starter-path (quote ("~/org")))
+ '(org-starter-path '("~/org"))
  '(package-selected-packages
-   (quote
-    (graphql-mode company-tabnine nodejs-repl cider-hydra paredit queue sesman 4clojure clojure-snippets inflections parseedn clojure-mode parseclj a cider-eval-sexp-fu clj-refactor elein cider gitter gist ts-comint yassnippet-snippets yassnippets-snippets zones editorconfig-generate jest-test-mode yarn-mode thrift yasnippet-snippets editorconfig tide typescript-mode w3m org-starter tern web-mode tagedit slim-mode scss-mode sass-mode pug-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data magithub beacon company-solidity solidity-flycheck solidity-mode dockerfile-mode docker web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc coffee-mode yaml-mode ripgrep yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc cython-mode company-anaconda anaconda-mode pythonic xterm-color unfill smeargle shell-pop orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mwim multi-term mmm-mode markdown-toc markdown-mode magit-gitflow magit-popup htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit git-commit with-editor transient eshell-z eshell-prompt-extras esh-help diff-hl company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired f evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
- '(send-mail-function (quote smtpmail-send-it))
+   '(helm-w3m dic-lookup-w3m paredit queue sesman 4clojure clojure-snippets inflections parseedn clojure-mode parseclj a cider-eval-sexp-fu clj-refactor elein cider gitter gist ts-comint yassnippet-snippets yassnippets-snippets zones editorconfig-generate jest-test-mode yarn-mode thrift yasnippet-snippets editorconfig tide typescript-mode w3m org-starter tern web-mode tagedit slim-mode scss-mode sass-mode pug-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data magithub beacon company-solidity solidity-flycheck solidity-mode dockerfile-mode docker web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc coffee-mode yaml-mode ripgrep yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc cython-mode company-anaconda anaconda-mode pythonic xterm-color unfill smeargle shell-pop orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mwim multi-term mmm-mode markdown-toc markdown-mode magit-gitflow magit-popup htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit git-commit with-editor transient eshell-z eshell-prompt-extras esh-help diff-hl company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired f evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))
+ '(send-mail-function 'smtpmail-send-it)
  '(yas-snippet-dirs
-   (quote
-    ("~/.emacs.d/private/snippets/" "~/.emacs.d/layers/+completion/auto-completion/local/snippets" "~/.emacs.d/elpa/yasnippet-snippets-20210105.1346/snippets"))))
+   '("~/.emacs.d/private/snippets/" "~/.emacs.d/layers/+completion/auto-completion/local/snippets" "~/.emacs.d/elpa/yasnippet-snippets-20210105.1346/snippets")))
