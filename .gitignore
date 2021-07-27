@@ -16,6 +16,7 @@
 !/scripts
 !/bin
 !/.ssh/
+!/.my/
 !/.emacs
 !/.Xdefautls
 !/.Xresources

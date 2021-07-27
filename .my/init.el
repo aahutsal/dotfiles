@@ -5,4 +5,10 @@
       calendar-longitude -25.594767
       calendar-location-name "Ternopil, Ukraine")
 
- (global-set-key (kbd "C-x w s") 'w3m-search)
+(global-set-key (kbd "C-x w s") 'w3m-search)
+
+;; Beacon
+(use-package beacon
+  :ensure t
+  :config (beacon-mode 1))
+
