@@ -22,7 +22,7 @@ XXkb.*.label.foreground: white
 XXkb.*.label.background: blue4
 XXkb.*.label.enable: no
 
-XXkb.mainwindow.type: tray
+XXkb.mainwindow.type: top
 ! possible values - normal, top, tray, wmaker
 
 XXkb.button.enable: no
