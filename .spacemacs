@@ -32,7 +32,7 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(
+   '(typescript
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
@@ -83,6 +83,8 @@ This function should only modify configuration layer settings."
                                       nnhackernews
                                       ;; tab-line
                                       beacon
+                                      exec-path-from-shell
+                                      keypression
                                       )
 
    ;; A list of packages that cannot be updated.
@@ -259,8 +261,8 @@ It should only modify the values of Spacemacs settings."
    ;; Default font or prioritized list of fonts. The `:size' can be specified as
    ;; a non-negative integer (pixel size), or a floating-point (point size).
    ;; Point size is recommended, because it's device independent. (default 10.0)
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 10.0
+   dotspacemacs-default-font '("Monoid"
+                               :size 12.0
                                :weight normal
                                :width normal)
 
@@ -578,9 +580,10 @@ This function is called at the very end of Spacemacs initialization."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(evil-want-Y-yank-to-eol nil)
+ '(exec-path
+   '("/usr/local/sbin" "/usr/local/bin" "/usr/sbin" "/usr/bin" "/sbin" "/bin" "/usr/libexec/emacs/27.2/x86_64-pc-linux-gnu" "/home/archer/.nvm/versions/node/v14.17.3/bin/node"))
  '(hl-todo-keyword-faces
-   (quote
-    (("TODO" . "#dc752f")
+   '(("TODO" . "#dc752f")
      ("NEXT" . "#dc752f")
      ("THEM" . "#2d9574")
      ("PROG" . "#4f97d7")
@@ -594,12 +597,11 @@ This function is called at the very end of Spacemacs initialization."
      ("TEMP" . "#b1951d")
      ("FIXME" . "#dc752f")
      ("XXX+" . "#dc752f")
-     ("\\?\\?\\?+" . "#dc752f"))))
+     ("\\?\\?\\?+" . "#dc752f")))
  '(package-selected-packages
-   (quote
-    (beacon graphql-mode nnreddit counsel-notmuch notmuch pdf-view-restore pdf-tools nov esxml kv smudge dockerfile-mode docker tablist docker-tramp clojure-snippets cider-eval-sexp-fu cider sesman seq queue parseedn clojure-mode parseclj a wgrep smex lsp-ivy ivy-yasnippet ivy-xref ivy-purpose ivy-hydra ivy-avy flyspell-correct-ivy counsel-spotify counsel-projectile counsel swiper ivy spotify helm-spotify-plus multi web-beautify prettier-js npm-mode nodejs-repl livid-mode skewer-mode simple-httpd json-navigator hierarchy js2-refactor multiple-cursors js2-mode js-doc yasnippet-snippets xterm-color ws-butler writeroom-mode winum which-key w3m vterm volatile-highlights vi-tilde-fringe uuidgen use-package unfill undo-tree ts-comint treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired toc-org terminal-here symon symbol-overlay string-inflection string-edit spaceline-all-the-icons smeargle shell-pop restart-emacs rainbow-delimiters quickrun popwin pcre2el password-generator paradox overseer orgit-forge org-superstar org-rich-yank org-projectile org-present org-pomodoro org-mime org-download org-contrib org-cliplink open-junk-file nameless mwim multi-term multi-line mmm-mode markdown-toc magithub macrostep lsp-ui lsp-treemacs lsp-origami lorem-ipsum link-hint json-mode indent-guide hybrid-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org-rifle helm-org helm-mode-manager helm-make helm-lsp helm-ls-git helm-gitignore helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ gh-md fuzzy font-lock+ flyspell-correct-helm flycheck-pos-tip flycheck-package flycheck-elsa flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emr elisp-slime-nav editorconfig dumb-jump drag-stuff dotenv-mode dired-quick-sort diminish define-word column-enforce-mode clean-aindent-mode centered-cursor-mode browse-at-remote auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ace-link ace-jump-helm-line ac-ispell)))
- '(pdf-view-midnight-colors (quote ("#b2b2b2" . "#292b2e")))
- '(send-mail-function (quote mailclient-send-it)))
+   '(keypression jest ob-typescript exec-path-from-shell web-mode typescript-mode import-js grizzl emmet-mode add-node-modules-path beacon graphql-mode nnreddit counsel-notmuch notmuch pdf-view-restore pdf-tools nov esxml kv smudge dockerfile-mode docker tablist docker-tramp clojure-snippets cider-eval-sexp-fu cider sesman seq queue parseedn clojure-mode parseclj a wgrep smex lsp-ivy ivy-yasnippet ivy-xref ivy-purpose ivy-hydra ivy-avy flyspell-correct-ivy counsel-spotify counsel-projectile counsel swiper ivy spotify helm-spotify-plus multi web-beautify prettier-js npm-mode nodejs-repl livid-mode skewer-mode simple-httpd json-navigator hierarchy js2-refactor multiple-cursors js2-mode js-doc yasnippet-snippets xterm-color ws-butler writeroom-mode winum which-key w3m vterm volatile-highlights vi-tilde-fringe uuidgen use-package unfill undo-tree ts-comint treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired toc-org terminal-here symon symbol-overlay string-inflection string-edit spaceline-all-the-icons smeargle shell-pop restart-emacs rainbow-delimiters quickrun popwin pcre2el password-generator paradox overseer orgit-forge org-superstar org-rich-yank org-projectile org-present org-pomodoro org-mime org-download org-contrib org-cliplink open-junk-file nameless mwim multi-term multi-line mmm-mode markdown-toc magithub macrostep lsp-ui lsp-treemacs lsp-origami lorem-ipsum link-hint json-mode indent-guide hybrid-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org-rifle helm-org helm-mode-manager helm-make helm-lsp helm-ls-git helm-gitignore helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ gh-md fuzzy font-lock+ flyspell-correct-helm flycheck-pos-tip flycheck-package flycheck-elsa flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emr elisp-slime-nav editorconfig dumb-jump drag-stuff dotenv-mode dired-quick-sort diminish define-word column-enforce-mode clean-aindent-mode centered-cursor-mode browse-at-remote auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ace-link ace-jump-helm-line ac-ispell))
+ '(pdf-view-midnight-colors '("#b2b2b2" . "#292b2e"))
+ '(send-mail-function 'mailclient-send-it))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

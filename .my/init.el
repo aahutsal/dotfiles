@@ -12,3 +12,15 @@
   :ensure t
   :config (beacon-mode 1))
 
+(if (string-equal system-type "gnu/linux")
+    (progn
+      (exec-path-from-shell-initialize))
+  )
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . nil)
+   (typescript . t)
+   (js . t)
+   (R . t)))
+
