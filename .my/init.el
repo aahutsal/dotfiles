@@ -7,6 +7,9 @@
 
 (global-set-key (kbd "C-x w s") 'w3m-search)
 
+;; loading tab-line (needed for w3m)
+(load "~/.emacs.d/tab-line.el")
+
 ;; Beacon
 (use-package beacon
   :ensure t
