@@ -85,6 +85,7 @@ This function should only modify configuration layer settings."
                                       beacon
                                       exec-path-from-shell
                                       keypression
+                                      ob-typescript
                                       )
 
    ;; A list of packages that cannot be updated.
