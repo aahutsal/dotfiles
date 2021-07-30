@@ -5,6 +5,10 @@
       calendar-longitude -25.594767
       calendar-location-name "Ternopil, Ukraine")
 
+;; decreasing mode-line font size
+(set-face-attribute 'mode-line nil  :height 80)
+
+;; setting 'w3m-search keybindings
 (global-set-key (kbd "C-x w s") 'w3m-search)
 
 ;; loading tab-line (needed for w3m)
