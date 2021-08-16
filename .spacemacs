@@ -32,7 +32,8 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(typescript
+   '(html
+     typescript
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
@@ -90,6 +91,19 @@ This function should only modify configuration layer settings."
                                       telega
                                       company-tabnine
                                       ack
+                                      embark
+                                      (org-roam
+                                       :ensure t
+                                       :custom
+                                       (org-roam-directory (file-truename "~/org/roam"))
+                                       :bind (("C-c n l" . org-roam-buffer-toggle)
+                                              ("C-c n f" . org-roam-node-find)
+                                              ("C-c n g" . org-roam-graph)
+                                              ("C-c n i" . org-roam-node-insert)
+                                              ("C-c n c" . org-roam-capture)
+                                              ;; Dailies
+                                              ("C-c n j" . org-roam-dailies-capture-today))
+                                       )
                                       )
 
    ;; A list of packages that cannot be updated.
@@ -267,7 +281,7 @@ It should only modify the values of Spacemacs settings."
    ;; a non-negative integer (pixel size), or a floating-point (point size).
    ;; Point size is recommended, because it's device independent. (default 10.0)
    dotspacemacs-default-font '("Monoid"
-                               :size 12.0
+                               :size 10.0
                                :weight normal
                                :width normal)
 
@@ -580,43 +594,19 @@ before packages are loaded.")
 This is an auto-generated function, do not modify its content directly, use
 Emacs customize menu instead.
 This function is called at the very end of Spacemacs initialization."
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes '(misterioso))
  '(evil-want-Y-yank-to-eol nil)
- '(exec-path
-   '("/usr/local/sbin" "/usr/local/bin" "/usr/sbin" "/usr/bin" "/sbin" "/bin" "/usr/libexec/emacs/27.2/x86_64-pc-linux-gnu" "/home/archer/.nvm/versions/node/v14.17.3/bin/node"))
- '(hl-todo-keyword-faces
-   '(("TODO" . "#dc752f")
-     ("NEXT" . "#dc752f")
-     ("THEM" . "#2d9574")
-     ("PROG" . "#4f97d7")
-     ("OKAY" . "#4f97d7")
-     ("DONT" . "#f2241f")
-     ("FAIL" . "#f2241f")
-     ("DONE" . "#86dc2f")
-     ("NOTE" . "#b1951d")
-     ("KLUDGE" . "#b1951d")
-     ("HACK" . "#b1951d")
-     ("TEMP" . "#b1951d")
-     ("FIXME" . "#dc752f")
-     ("XXX+" . "#dc752f")
-     ("\\?\\?\\?+" . "#dc752f")))
- '(org-pomodoro-length 50)
- '(org-pomodoro-short-break-length 10)
  '(package-selected-packages
-   '(ack julia-vterm vterm-toggle telega 4clojure pomidor company-tabnine yarn-mode realgud-trepan-ni realgud-node-inspect keypression jest ob-typescript exec-path-from-shell web-mode typescript-mode import-js grizzl emmet-mode add-node-modules-path beacon graphql-mode nnreddit counsel-notmuch notmuch pdf-view-restore pdf-tools nov esxml kv smudge dockerfile-mode docker tablist docker-tramp clojure-snippets cider-eval-sexp-fu cider sesman seq queue parseedn clojure-mode parseclj a wgrep smex lsp-ivy ivy-yasnippet ivy-xref ivy-purpose ivy-hydra ivy-avy flyspell-correct-ivy counsel-spotify counsel-projectile counsel swiper ivy spotify helm-spotify-plus multi web-beautify prettier-js npm-mode nodejs-repl livid-mode skewer-mode simple-httpd json-navigator hierarchy js2-refactor multiple-cursors js2-mode js-doc yasnippet-snippets xterm-color ws-butler writeroom-mode winum which-key w3m vterm volatile-highlights vi-tilde-fringe uuidgen use-package unfill undo-tree ts-comint treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired toc-org terminal-here symon symbol-overlay string-inflection string-edit spaceline-all-the-icons smeargle shell-pop restart-emacs rainbow-delimiters quickrun popwin pcre2el password-generator paradox overseer orgit-forge org-superstar org-rich-yank org-projectile org-present org-mime org-download org-contrib org-cliplink open-junk-file nameless mwim multi-term multi-line mmm-mode markdown-toc magithub macrostep lsp-ui lsp-treemacs lsp-origami lorem-ipsum link-hint json-mode indent-guide hybrid-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org-rifle helm-org helm-mode-manager helm-make helm-lsp helm-ls-git helm-gitignore helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ gh-md fuzzy font-lock+ flyspell-correct-helm flycheck-pos-tip flycheck-package flycheck-elsa flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emr elisp-slime-nav editorconfig dumb-jump drag-stuff dotenv-mode dired-quick-sort diminish define-word column-enforce-mode clean-aindent-mode centered-cursor-mode browse-at-remote auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ace-link ace-jump-helm-line ac-ispell))
- '(pdf-view-midnight-colors '("#b2b2b2" . "#292b2e"))
+   '(exwm org-roam yasnippet-snippets xterm-color ws-butler writeroom-mode winum which-key wgrep web-mode web-beautify w3m vterm volatile-highlights vi-tilde-fringe uuidgen use-package unfill undo-tree ts-comint treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired toc-org tide terminal-here telega tagedit symon symbol-overlay string-inflection string-edit spotify spaceline-all-the-icons smex smeargle slim-mode shell-pop scss-mode sass-mode restart-emacs rainbow-delimiters quickrun pug-mode prettier-js popwin pomidor pdf-view-restore pcre2el password-generator paradox overseer orgit-forge org-superstar org-rich-yank org-projectile org-present org-pomodoro org-mime org-download org-contrib org-cliplink open-junk-file ob-typescript npm-mode nov nodejs-repl nnreddit nnhackernews nameless mwim multi-term multi-line mmm-mode markdown-toc magithub macrostep lsp-ui lsp-treemacs lsp-origami lsp-ivy lorem-ipsum livid-mode link-hint keypression json-navigator js2-refactor js-doc ivy-yasnippet ivy-xref ivy-purpose ivy-hydra ivy-avy indent-guide impatient-mode hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-make graphql-mode google-translate golden-ratio gnuplot gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ gh-md fuzzy font-lock+ flyspell-correct-ivy flycheck-pos-tip flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-collection evil-cleverparens evil-args evil-anzu eshell-z eshell-prompt-extras esh-help emr emmet-mode embark elisp-slime-nav editorconfig dumb-jump drag-stuff dotenv-mode dockerfile-mode docker dired-quick-sort diminish define-word counsel-spotify counsel-projectile counsel-notmuch counsel-css company-web company-tabnine column-enforce-mode clojure-snippets clean-aindent-mode cider-eval-sexp-fu cider centered-cursor-mode browse-at-remote beacon auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ack ace-link ac-ispell))
  '(pomidor-break-seconds 600)
- '(pomidor-breaks-before-long 2)
  '(pomidor-long-break-seconds 2400)
  '(pomidor-seconds 3000)
- '(send-mail-function 'mailclient-send-it)
- '(telega-use-docker t)
- '(yas-global-mode t))
+ '(telega-use-docker t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
