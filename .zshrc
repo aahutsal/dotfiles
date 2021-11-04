@@ -118,6 +118,8 @@ if [ -x /usr/bin/dircolors ]; then
    alias grep='grep --color=auto'
    alias fgrep='fgrep --color=auto'
    alias egrep='egrep --color=auto'
+   alias cdar='cd ~/dev/wcsidechain/packages/arweave/'
+   alias cdsol='cd ~/dev/wcsidechain/packages/solana/'
 fi
 
 # if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
@@ -127,3 +129,23 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Add user-local path
+export PATH=$PATH:~/.bin/
+
+# Aliases
+alias arecordvvv='arecord -vvv -f dat /dev/null'
+alias diff='diff --color'
+alias egrep='egrep --color'
+alias fgrep='fgrep --color'
+alias grep='grep --color --ignore-case'
+alias la='ll -A'
+alias ll='ls -ghlo'
+alias lll='ls -hl'
+alias ls='ls --color --group-directories-first'
+alias rsync='rsync --human-readable --info=progress2'
+alias tree='tree -C'
+
+# Prompt
+autoload -U promptinit; promptinit
+prompt fire blue green red

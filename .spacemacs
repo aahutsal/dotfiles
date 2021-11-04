@@ -32,7 +32,9 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(html
+   '(python
+     yaml
+     html
      typescript
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
@@ -82,7 +84,7 @@ This function should only modify configuration layer settings."
                                       ts-comint
                                       nnreddit
                                       nnhackernews
-                                      (tab-line "~/.emacs.d/tab-line.el")
+                                      ;; (tab-line "~/.emacs.d/tab-line.el")
                                       beacon
                                       exec-path-from-shell
                                       keypression
@@ -92,6 +94,7 @@ This function should only modify configuration layer settings."
                                       company-tabnine
                                       ack
                                       embark
+                                      org-roam
                                       (org-roam
                                        :ensure t
                                        :custom
@@ -104,6 +107,8 @@ This function should only modify configuration layer settings."
                                               ;; Dailies
                                               ("C-c n j" . org-roam-dailies-capture-today))
                                        )
+                                      org-roam
+                                      exwm
                                       )
 
    ;; A list of packages that cannot be updated.
@@ -574,7 +579,7 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first.")
 This function is called only while dumping Spacemacs configuration. You can
 `require' or `load' the libraries of your choice that will be included in the
 dump."
-(load "/home/archer/.my/init.el"))
+)
 
 
 (defun dotspacemacs/user-config ()
@@ -582,7 +587,8 @@ dump."
 This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
-before packages are loaded.")
+before packages are loaded."
+ (load "/home/archer/.my/init.el"))
 
 
 
@@ -594,18 +600,16 @@ before packages are loaded.")
 This is an auto-generated function, do not modify its content directly, use
 Emacs customize menu instead.
 This function is called at the very end of Spacemacs initialization."
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(evil-want-Y-yank-to-eol nil)
+ '(exwm-layout-show-all-buffers t)
+ '(exwm-randr-workspace-monitor-plist '(0 "HDMI-1" 1 "DP-1-8"))
  '(package-selected-packages
-   '(exwm org-roam yasnippet-snippets xterm-color ws-butler writeroom-mode winum which-key wgrep web-mode web-beautify w3m vterm volatile-highlights vi-tilde-fringe uuidgen use-package unfill undo-tree ts-comint treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired toc-org tide terminal-here telega tagedit symon symbol-overlay string-inflection string-edit spotify spaceline-all-the-icons smex smeargle slim-mode shell-pop scss-mode sass-mode restart-emacs rainbow-delimiters quickrun pug-mode prettier-js popwin pomidor pdf-view-restore pcre2el password-generator paradox overseer orgit-forge org-superstar org-rich-yank org-projectile org-present org-pomodoro org-mime org-download org-contrib org-cliplink open-junk-file ob-typescript npm-mode nov nodejs-repl nnreddit nnhackernews nameless mwim multi-term multi-line mmm-mode markdown-toc magithub macrostep lsp-ui lsp-treemacs lsp-origami lsp-ivy lorem-ipsum livid-mode link-hint keypression json-navigator js2-refactor js-doc ivy-yasnippet ivy-xref ivy-purpose ivy-hydra ivy-avy indent-guide impatient-mode hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-make graphql-mode google-translate golden-ratio gnuplot gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ gh-md fuzzy font-lock+ flyspell-correct-ivy flycheck-pos-tip flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-collection evil-cleverparens evil-args evil-anzu eshell-z eshell-prompt-extras esh-help emr emmet-mode embark elisp-slime-nav editorconfig dumb-jump drag-stuff dotenv-mode dockerfile-mode docker dired-quick-sort diminish define-word counsel-spotify counsel-projectile counsel-notmuch counsel-css company-web company-tabnine column-enforce-mode clojure-snippets clean-aindent-mode cider-eval-sexp-fu cider centered-cursor-mode browse-at-remote beacon auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ack ace-link ac-ispell))
- '(pomidor-break-seconds 600)
- '(pomidor-long-break-seconds 2400)
- '(pomidor-seconds 3000)
+   '(spice-mode el-spice exwm-x emacsql-psql exmw exwm w3m highlight-parentheses forge magit evil-collection embark counsel transient smartparens lsp-mode treemacs request all-the-icons which-key yasnippet-snippets yaml xterm-color ws-butler writeroom-mode winum wgrep web-mode web-beautify vterm volatile-highlights vi-tilde-fringe uuidgen use-package unfill undo-tree ts-comint treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired toc-org tide terminal-here telega tagedit symon symbol-overlay swiper string-inflection string-edit spotify spaceline-all-the-icons smex smeargle slim-mode shell-pop scss-mode sass-mode restart-emacs rainbow-delimiters quickrun pug-mode prettier-js popwin pomidor pdf-view-restore pcre2el password-generator paradox overseer orgit-forge org-superstar org-rich-yank org-projectile org-present org-pomodoro org-mime org-download org-contrib org-cliplink open-junk-file ob-typescript npm-mode nov nodejs-repl nnreddit nnhackernews nameless mwim multi-term multi-line mmm-mode markdown-toc magithub magit-section macrostep lsp-ui lsp-treemacs lsp-origami lsp-ivy lorem-ipsum livid-mode link-hint keypression json-navigator js2-refactor js-doc ivy-yasnippet ivy-xref ivy-purpose ivy-hydra ivy-avy indent-guide impatient-mode hybrid-mode hungry-delete hl-todo highlight-numbers highlight-indentation helm-make graphql-mode google-translate golden-ratio gnuplot gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ gh-md fuzzy font-lock+ flyspell-correct-ivy flycheck-pos-tip flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eshell-z eshell-prompt-extras esh-help emr emmet-mode elisp-slime-nav editorconfig dumb-jump drag-stuff dotenv-mode dockerfile-mode docker dired-quick-sort diminish define-word counsel-spotify counsel-projectile counsel-notmuch counsel-css company-web company-tabnine column-enforce-mode closql clojure-snippets clean-aindent-mode cider-eval-sexp-fu cider cfrs centered-cursor-mode browse-at-remote beacon auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile annalist aggressive-indent ack ace-window ace-link ac-ispell))
  '(telega-use-docker t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

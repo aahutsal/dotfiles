@@ -5,6 +5,8 @@
       calendar-longitude -25.594767
       calendar-location-name "Ternopil, Ukraine")
 
+(exwm-init)
+;; (spacemacs/toggle-fullscreen)
 ;; decreasing mode-line font size
 (set-face-attribute 'mode-line nil  :height 80)
 
@@ -58,11 +60,35 @@
   :ensure t
   :config (org-babel-do-load-languages
            'org-babel-load-languages
-           '((emacs-lisp . nil)
+           '((emacs-lisp . t)
+
+             (dot . t)
+             (calc . t)
+             (ditaa . t)
+             (gnuplot . t)
+             (shell . t)
+             (ledger . t)
+             (org . t)
+             (picolisp . t)
+             (clojure . t)
+             (lilypond . t)
+             (plantuml . t)
+             (latex . t)
              (typescript . t)
              (js . t)
+             (C . t)
              (R . t))))
 
+(require 'exwm-randr)
+(setq exwm-randr-workspace-output-plist '(0 "HDMI-1" 1 "DP-1-8"  2 "DP-1-8"  3 "DP-1-8" ))
+(add-hook 'exwm-randr-screen-change-hook
+          (lambda ()
+            (start-process-shell-command
+             "xrandr" nil "--output HDMI-1 --right-of DP-1-8 --auto --output DP-1-8 --auto")))
+(exwm-randr-enable)
+
+(require 'exwm-systemtray)
+(exwm-systemtray-enable)
 (use-package org-roam
   :ensure t
   :custom
@@ -79,6 +105,7 @@
   ;; If using org-roam-protocol
   (require 'org-roam-protocol))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; AH namespace ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(setq org-roam-v2-ack t)
 
 (global-set-key (kbd "C-x C-b") 'ibuffer-other-window)
 
@@ -87,8 +114,25 @@
   (org-insert-time-stamp nil t t)
   (insert "  "))
 
-
 (defun ah/org-insert-current-time-stamp-active ()
   (interactive)
   (org-insert-time-stamp nil)
   (insert "  "))
+
+(use-package pomidor
+  :ensure t
+  :config (setq pomidor-sound-tick nil
+                pomidor-sound-tack nil)
+  :hook (pomidor-mode . (lambda ()
+                          (display-line-numbers-mode -1) ; Emacs 26.1+
+                          (setq left-fringe-width 0 right-fringe-width 0)
+                          (setq left-margin-width 2 right-margin-width 0)
+                          ;; force fringe update
+                          (set-window-buffer nil (current-buffer))))
+  :bind (("C-x p p" . pomidor)
+         ("C-x p b" . pomidor-break)))
+(require 'telega)
+(telega)
+;; (exwm-randr-refresh)
+(exwm-init)
+ 
