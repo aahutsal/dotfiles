@@ -66,7 +66,8 @@ This function should only modify configuration layer settings."
      epub
      pdf
      graphql
-     treemacs)
+     treemacs
+     coq)
 
 
    ;; List of additional packages that will be installed without being wrapped
@@ -94,6 +95,8 @@ This function should only modify configuration layer settings."
                                       company-tabnine
                                       ack
                                       embark
+                                      clj-refactor
+                                      elein
                                       org-roam
                                       (org-roam
                                        :ensure t
@@ -607,9 +610,11 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(evil-want-Y-yank-to-eol nil)
  '(exwm-layout-show-all-buffers t)
- '(exwm-randr-workspace-monitor-plist '(0 "HDMI-1" 1 "DP-1-8"))
+ '(exwm-randr-workspace-monitor-plist (quote (0 "HDMI-1" 1 "DP-1-8")))
  '(package-selected-packages
-   '(spice-mode el-spice exwm-x emacsql-psql exmw exwm w3m highlight-parentheses forge magit evil-collection embark counsel transient smartparens lsp-mode treemacs request all-the-icons which-key yasnippet-snippets yaml xterm-color ws-butler writeroom-mode winum wgrep web-mode web-beautify vterm volatile-highlights vi-tilde-fringe uuidgen use-package unfill undo-tree ts-comint treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired toc-org tide terminal-here telega tagedit symon symbol-overlay swiper string-inflection string-edit spotify spaceline-all-the-icons smex smeargle slim-mode shell-pop scss-mode sass-mode restart-emacs rainbow-delimiters quickrun pug-mode prettier-js popwin pomidor pdf-view-restore pcre2el password-generator paradox overseer orgit-forge org-superstar org-rich-yank org-projectile org-present org-pomodoro org-mime org-download org-contrib org-cliplink open-junk-file ob-typescript npm-mode nov nodejs-repl nnreddit nnhackernews nameless mwim multi-term multi-line mmm-mode markdown-toc magithub magit-section macrostep lsp-ui lsp-treemacs lsp-origami lsp-ivy lorem-ipsum livid-mode link-hint keypression json-navigator js2-refactor js-doc ivy-yasnippet ivy-xref ivy-purpose ivy-hydra ivy-avy indent-guide impatient-mode hybrid-mode hungry-delete hl-todo highlight-numbers highlight-indentation helm-make graphql-mode google-translate golden-ratio gnuplot gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ gh-md fuzzy font-lock+ flyspell-correct-ivy flycheck-pos-tip flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eshell-z eshell-prompt-extras esh-help emr emmet-mode elisp-slime-nav editorconfig dumb-jump drag-stuff dotenv-mode dockerfile-mode docker dired-quick-sort diminish define-word counsel-spotify counsel-projectile counsel-notmuch counsel-css company-web company-tabnine column-enforce-mode closql clojure-snippets clean-aindent-mode cider-eval-sexp-fu cider cfrs centered-cursor-mode browse-at-remote beacon auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile annalist aggressive-indent ack ace-window ace-link ac-ispell))
+   (quote
+    (org-roam cljr-ivy nrepl-sync clj-refactor elein proof-general dap-mode bui company-coq spice-mode el-spice exwm-x emacsql-psql exmw exwm w3m highlight-parentheses forge magit evil-collection embark counsel transient smartparens lsp-mode treemacs request all-the-icons which-key yasnippet-snippets yaml xterm-color ws-butler writeroom-mode winum wgrep web-mode web-beautify vterm volatile-highlights vi-tilde-fringe uuidgen use-package unfill undo-tree ts-comint treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired toc-org tide terminal-here telega tagedit symon symbol-overlay swiper string-inflection string-edit spotify spaceline-all-the-icons smex smeargle slim-mode shell-pop scss-mode sass-mode restart-emacs rainbow-delimiters quickrun pug-mode prettier-js popwin pomidor pdf-view-restore pcre2el password-generator paradox overseer orgit-forge org-superstar org-rich-yank org-projectile org-present org-pomodoro org-mime org-download org-contrib org-cliplink open-junk-file ob-typescript npm-mode nov nodejs-repl nnreddit nnhackernews nameless mwim multi-term multi-line mmm-mode markdown-toc magithub magit-section macrostep lsp-ui lsp-treemacs lsp-origami lsp-ivy lorem-ipsum livid-mode link-hint keypression json-navigator js2-refactor js-doc ivy-yasnippet ivy-xref ivy-purpose ivy-hydra ivy-avy indent-guide impatient-mode hybrid-mode hungry-delete hl-todo highlight-numbers highlight-indentation helm-make graphql-mode google-translate golden-ratio gnuplot gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ gh-md fuzzy font-lock+ flyspell-correct-ivy flycheck-pos-tip flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eshell-z eshell-prompt-extras esh-help emr emmet-mode elisp-slime-nav editorconfig dumb-jump drag-stuff dotenv-mode dockerfile-mode docker dired-quick-sort diminish define-word counsel-spotify counsel-projectile counsel-notmuch counsel-css company-web company-tabnine column-enforce-mode closql clojure-snippets clean-aindent-mode cider-eval-sexp-fu cider cfrs centered-cursor-mode browse-at-remote beacon auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile annalist aggressive-indent ack ace-window ace-link ac-ispell)))
+ '(paradox-github-token (quote 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))
  '(telega-use-docker t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

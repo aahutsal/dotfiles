@@ -1,5 +1,5 @@
 ;; Personal Information
-(setq user-full-name "Arsen A. Gutsal"
+(setq user-full-name "Arsen A. Hutsal"
       user-mail-address "gutsal.arsen@gmail.com"
       calendar-latitude 49.553516
       calendar-longitude -25.594767
@@ -134,5 +134,8 @@
 (require 'telega)
 (telega)
 ;; (exwm-randr-refresh)
-(exwm-init)
- 
+;; (exwm-init)
+(require 'exwm)
+(require 'exwm-config)
+(exwm-config-default)
+
