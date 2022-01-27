@@ -1,0 +1,2 @@
+#!/bin/sh
+feh --no-fehbg --bg-fill '/home/archer/Desktop/M101_hst1280.jpg' 
