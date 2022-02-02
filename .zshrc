@@ -9,8 +9,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 #ZSH_THEME="random"
-ZSH_THEME="candy"
-#ZSH_THEME="steeef"
+#ZSH_THEME="candy"
+ZSH_THEME="steeef"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -102,7 +102,7 @@ export ARCHFLAGS="-arch x86_64"
 alias godev="ssh ubuntu@dev"
 alias gofprx="ssh ubuntu@fprx -i ~/dev/robot-keys/fairpricerx-virginia.pem"
 alias ed="emacsclient -c"
-alias trans="docker run -it soimort/translate-shell"
+alias trans="docker exec -it translate-shell trans"
 alias t="tmate attach || tmate"
 alias aws-cli="docker run --rm -it amazon/aws-cli"
 
@@ -131,7 +131,8 @@ export NVM_DIR="$HOME/.nvm"
 #[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Add user-local path
-export PATH=$PATH:~/.bin/
+export PATH=~/bin:$PATH
+export JAVA_HOME=/opt/openjdk-bin-17
 
 # Aliases
 alias arecordvvv='arecord -vvv -f dat /dev/null'
@@ -145,7 +146,18 @@ alias lll='ls -hl'
 alias ls='ls --color --group-directories-first'
 alias rsync='rsync --human-readable --info=progress2'
 alias tree='tree -C'
+alias wakequad='wakeonlan 00:23:7d:d0:3f:8e'
+alias wakeq520='wakeonlan 90:1b:0e:19:21:a1'
+alias wakeall='wakequad;wakeq520'
+alias sleepquad="ssh quad 'sudo shutdown -h now'"
+alias sleepq520="ssh q520 'sudo s2ram'"
+alias sleepall='sleepquad;sleepq520'
+alias aws='docker exec -ti aws-cli aws '
 
 # Prompt
-autoload -U promptinit; promptinit
-prompt fire blue green re
+# autoload -U promptinit; promptinit
+# prompt fire blue green re
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
