@@ -5,18 +5,24 @@
       calendar-longitude -25.594767
       calendar-location-name "Ternopil, Ukraine")
 
-(exwm-init)
 ;; (spacemacs/toggle-fullscreen)
 ;; decreasing mode-line font size
 (set-face-attribute 'mode-line nil  :height 80)
 
 ;; setting 'w3m-search keybindings
+(use-package w3m
+  :bind (("C-c [" . w3m-tab-previous-buffer)
+         ("C-c ]" . w3m-tab-next-buffer)
+         ("C-c x" . w3m-delete-buffer)))
 (global-set-key (kbd "C-x w s") 'w3m-search)
+
 
 (global-set-key (kbd "C-S-x") 'embark-act)
 
+(global-set-key (kbd "TAB") 'yas/expand)
+
 ;; loading tab-line (needed for w3m)
-(load "~/.emacs.d/tab-line.el")
+;; (load "~/.emacs.d/tab-line.el")
 
 ;; Beacon
 (use-package beacon
@@ -29,7 +35,6 @@
   )
 
 (use-package company-tabnine
-
   :ensure t
   :config (add-to-list 'company-backends #'company-tabnine))
 
@@ -61,7 +66,6 @@
   :config (org-babel-do-load-languages
            'org-babel-load-languages
            '((emacs-lisp . t)
-
              (dot . t)
              (calc . t)
              (ditaa . t)
@@ -79,16 +83,24 @@
              (C . t)
              (R . t))))
 
-(require 'exwm-randr)
-(setq exwm-randr-workspace-output-plist '(0 "HDMI-1" 1 "DP-1-8"  2 "DP-1-8"  3 "DP-1-8" ))
-(add-hook 'exwm-randr-screen-change-hook
-          (lambda ()
-            (start-process-shell-command
-             "xrandr" nil "--output HDMI-1 --right-of DP-1-8 --auto --output DP-1-8 --auto")))
-(exwm-randr-enable)
+;; (exwm-init)
+;; (require 'exwm-randr)
+;; (setq exwm-randr-workspace-output-plist '(0 "HDMI-1" 1 "DP-1-8"  2 "DP-1-8"  3 "DP-1-8" ))
+;; (add-hook 'exwm-randr-screen-change-hook
+;;           (lambda ()
+;;             (start-process-shell-command
+;;              "xrandr" nil "--output HDMI-1 --right-of DP-1-8 --auto --output DP-1-8 --auto")))
+;; (exwm-randr-enable)
 
-(require 'exwm-systemtray)
-(exwm-systemtray-enable)
+;; (require 'exwm-systemtray)
+;; (exwm-systemtray-enable)
+;; (exwm-randr-refresh)
+;; (exwm-init)
+;; (require 'exwm)
+;; (require 'exwm-config)
+;; (exwm-config-default)
+
+
 (use-package org-roam
   :ensure t
   :custom
@@ -119,6 +131,9 @@
   (org-insert-time-stamp nil)
   (insert "  "))
 
+(use-package org-trello
+  :ensure t)
+
 (use-package pomidor
   :ensure t
   :config (setq pomidor-sound-tick nil
@@ -131,11 +146,8 @@
                           (set-window-buffer nil (current-buffer))))
   :bind (("C-x p p" . pomidor)
          ("C-x p b" . pomidor-break)))
+
 (require 'telega)
+(setq telega-use-docker t)
 (telega)
-;; (exwm-randr-refresh)
-;; (exwm-init)
-(require 'exwm)
-(require 'exwm-config)
-(exwm-config-default)
 
