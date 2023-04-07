@@ -101,9 +101,11 @@ This function should only modify configuration layer settings."
                                       telega
                                       company-tabnine
                                       ack
+                                      emojify
                                       embark
                                       elein
                                       ol-notmuch
+                                      npm
                                       org-roam
                                       (org-roam
                                        :ensure t
@@ -117,6 +119,7 @@ This function should only modify configuration layer settings."
                                               ;; Dailies
                                               ("C-c n j" . org-roam-dailies-capture-today))
                                        )
+                                      ;; (copilot.el :location (recipe :fetcher github :repo "zerolfx/copilot.el"))
                                       org-roam
                                       exwm
                                       )
@@ -296,7 +299,7 @@ It should only modify the values of Spacemacs settings."
    ;; a non-negative integer (pixel size), or a floating-point (point size).
    ;; Point size is recommended, because it's device independent. (default 10.0)
    dotspacemacs-default-font '("Monoid"
-                               :size 11.0
+                               :size 10.0
                                :weight normal
                                :width normal)
 
@@ -615,6 +618,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
+ '(backup-directory-alist '(("." . "~/.saves")))
  '(cider-repl-use-content-types t)
  '(custom-enabled-themes '(tango-dark))
  '(custom-safe-themes
@@ -622,6 +626,8 @@ This function is called at the very end of Spacemacs initialization."
  '(evil-want-Y-yank-to-eol nil)
  '(exwm-layout-show-all-buffers t)
  '(exwm-randr-workspace-monitor-plist '(0 "HDMI-1" 1 "DP-1-8"))
+ '(grep-find-ignored-directories
+   '("SCCS" "RCS" "CVS" "MCVS" ".src" ".svn" ".git" ".hg" ".bzr" "_MTN" "_darcs" "{arch}" "node_modules" "hoprnet-release-lisbon"))
  '(hl-todo-keyword-faces
    '(("TODO" . "#dc752f")
      ("NEXT" . "#dc752f")
@@ -638,14 +644,19 @@ This function is called at the very end of Spacemacs initialization."
      ("FIXME" . "#dc752f")
      ("XXX+" . "#dc752f")
      ("\\?\\?\\?+" . "#dc752f")))
+ '(markdown-command "markdown2")
  '(org-fontify-done-headline nil)
  '(org-fontify-todo-headline nil)
  '(org-plantuml-jar-path "/usr/share/plantuml/lib/plantuml.jar")
  '(org-trello-current-prefix-keybinding "C-c o" nil (org-trello))
  '(package-selected-packages
-   '(ol-notmuch vue-mode plantuml-mode org-gcal reddigg org-roam-ui dotnet csharp-mode vertico company-arduino arduino-mode arduino-cli-mode org-trello mermaid-mode ob-mermaid easy-kill org-ref slack ansible php-mode csv-mode saveplace-pdf-view telega solidity-mode git-gutter eldoc company-go ghub helm helm-core godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc go-mode ggtags flycheck-golangci-lint posframe counsel-gtags company vyper-mode 4clojure deno-fmt color-theme-tangotango systemd gmail-message-mode gmail2bbdb org-roam cljr-ivy nrepl-sync clj-refactor elein proof-general dap-mode bui company-coq spice-mode el-spice exwm-x emacsql-psql exmw exwm w3m highlight-parentheses forge magit evil-collection embark counsel transient smartparens lsp-mode treemacs request all-the-icons which-key yasnippet-snippets yaml xterm-color ws-butler writeroom-mode winum wgrep web-mode web-beautify vterm volatile-highlights vi-tilde-fringe uuidgen use-package unfill undo-tree ts-comint treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired toc-org tide terminal-here tagedit symon symbol-overlay swiper string-inflection string-edit spotify spaceline-all-the-icons smex smeargle slim-mode shell-pop scss-mode sass-mode restart-emacs rainbow-delimiters quickrun pug-mode prettier-js popwin pomidor pdf-view-restore pcre2el password-generator paradox overseer orgit-forge org-superstar org-rich-yank org-projectile org-present org-pomodoro org-mime org-download org-contrib org-cliplink open-junk-file ob-typescript npm-mode nov nodejs-repl nnreddit nnhackernews nameless mwim multi-term multi-line mmm-mode markdown-toc magithub magit-section macrostep lsp-ui lsp-treemacs lsp-origami lsp-ivy lorem-ipsum livid-mode link-hint keypression json-navigator js2-refactor js-doc ivy-yasnippet ivy-xref ivy-purpose ivy-hydra ivy-avy indent-guide impatient-mode hybrid-mode hungry-delete hl-todo highlight-numbers highlight-indentation helm-make graphql-mode google-translate golden-ratio gnuplot gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ gh-md fuzzy font-lock+ flyspell-correct-ivy flycheck-pos-tip flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eshell-z eshell-prompt-extras esh-help emr emmet-mode elisp-slime-nav editorconfig dumb-jump drag-stuff dotenv-mode dockerfile-mode docker dired-quick-sort diminish define-word counsel-spotify counsel-projectile counsel-notmuch counsel-css company-web company-tabnine column-enforce-mode closql clojure-snippets clean-aindent-mode cider-eval-sexp-fu cider cfrs centered-cursor-mode browse-at-remote beacon auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile annalist aggressive-indent ack ace-window ace-link ac-ispell))
+   '(change-inner jest magit-popup lsp-docker xah-fly-keys sr-speedbar npm mu4e-views emojify no-emoji prettier-rc prettier hardhat flymake-solidity yarn-mode editorconfig-generate org-brain haxe-mode cask company-solidity solidity-flycheck ol-notmuch vue-mode plantuml-mode org-gcal reddigg org-roam-ui dotnet csharp-mode vertico company-arduino arduino-mode arduino-cli-mode org-trello mermaid-mode ob-mermaid easy-kill org-ref slack ansible php-mode csv-mode saveplace-pdf-view telega solidity-mode git-gutter eldoc company-go ghub helm helm-core godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc go-mode ggtags flycheck-golangci-lint posframe counsel-gtags company vyper-mode 4clojure deno-fmt color-theme-tangotango systemd gmail-message-mode gmail2bbdb org-roam cljr-ivy nrepl-sync clj-refactor elein proof-general dap-mode bui company-coq spice-mode el-spice exwm-x emacsql-psql exmw exwm w3m highlight-parentheses forge magit evil-collection embark counsel transient smartparens lsp-mode treemacs request all-the-icons which-key yasnippet-snippets yaml xterm-color ws-butler writeroom-mode winum wgrep web-mode web-beautify vterm volatile-highlights vi-tilde-fringe uuidgen use-package unfill ts-comint treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired toc-org tide terminal-here tagedit symon symbol-overlay swiper string-inflection string-edit spotify spaceline-all-the-icons smex smeargle slim-mode shell-pop scss-mode sass-mode restart-emacs rainbow-delimiters quickrun pug-mode prettier-js popwin pomidor pdf-view-restore pcre2el password-generator paradox overseer orgit-forge org-superstar org-rich-yank org-projectile org-present org-pomodoro org-mime org-download org-contrib org-cliplink open-junk-file ob-typescript npm-mode nov nodejs-repl nnreddit nnhackernews nameless mwim multi-term multi-line mmm-mode markdown-toc magithub magit-section macrostep lsp-ui lsp-treemacs lsp-origami lsp-ivy lorem-ipsum livid-mode link-hint keypression json-navigator js2-refactor js-doc ivy-yasnippet ivy-xref ivy-purpose ivy-hydra ivy-avy indent-guide impatient-mode hybrid-mode hungry-delete hl-todo highlight-numbers highlight-indentation helm-make graphql-mode google-translate golden-ratio gnuplot gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ gh-md fuzzy font-lock+ flyspell-correct-ivy flycheck-pos-tip flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eshell-z eshell-prompt-extras esh-help emr emmet-mode elisp-slime-nav editorconfig dumb-jump drag-stuff dotenv-mode dockerfile-mode docker dired-quick-sort diminish define-word counsel-spotify counsel-projectile counsel-notmuch counsel-css company-web company-tabnine column-enforce-mode closql clojure-snippets clean-aindent-mode cider-eval-sexp-fu cider cfrs centered-cursor-mode browse-at-remote beacon auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile annalist aggressive-indent ack ace-window ace-link ac-ispell))
  '(paradox-github-token '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)
  '(pdf-view-midnight-colors '("#b2b2b2" . "#292b2e"))
+ '(persp-nil-name "Default")
+ '(pomidor-break-seconds 600)
+ '(pomidor-long-break-seconds 2400)
+ '(pomidor-seconds 3000)
  '(send-mail-function 'mailclient-send-it)
  '(telega-use-docker t))
 (custom-set-faces
@@ -653,7 +664,8 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(highlight-parentheses-highlight ((nil (:weight ultra-bold))) t))
+ '(highlight-parentheses-highlight ((nil (:weight ultra-bold))) t)
+ '(region ((t nil))))
 )
 
 

@@ -101,6 +101,27 @@
 ;; (exwm-config-default)
 
 
+;; Move current line up/down
+(defun move-line-up ()
+  "Move up the current line."
+  (interactive)
+  (transpose-lines 1)
+  (forward-line -2)
+  (indent-according-to-mode))
+
+(defun move-line-down ()
+  "Move down the current line."
+  (interactive)
+  (forward-line 1)
+  (transpose-lines 1)
+  (forward-line -1)
+  (indent-according-to-mode))
+
+
+(global-set-key [(control shift up)]  'move-line-up)
+(global-set-key [(control shift down)]  'move-line-down)
+;; end Move current line
+
 (use-package org-roam
   :ensure t
   :custom
@@ -139,7 +160,7 @@
   :config (setq pomidor-sound-tick nil
                 pomidor-sound-tack nil)
   :hook (pomidor-mode . (lambda ()
-                          (display-line-numbers-mode -1) ; Emacs 26.1+
+n                          (display-line-numbers-mode -1) ; Emacs 26.1+
                           (setq left-fringe-width 0 right-fringe-width 0)
                           (setq left-margin-width 2 right-margin-width 0)
                           ;; force fringe update
@@ -147,7 +168,77 @@
   :bind (("C-x p p" . pomidor)
          ("C-x p b" . pomidor-break)))
 
+;; ====  Typescript + Deno ====
+ (require 'ts-comint)
+(add-hook 'typescript-mode-hook
+          (lambda ()
+            (local-set-key (kbd "C-x C-e") 'ts-send-last-sexp)
+            (local-set-key (kbd "C-M-x") 'ts-send-last-sexp-and-go)
+            (local-set-key (kbd "C-c b") 'ts-send-buffer)
+            (local-set-key (kbd "C-c C-b") 'ts-send-buffer-and-go)
+            (local-set-key (kbd "C-c l") 'ts-load-file-and-go)))
+;; when configuring all repl toggle mapping
+(setq rtog/mode-repl-alist '((typescript-mode . run-ts)))
+;; or later
+(push '(typescript-mode . run-ts) rtog/mode-repl-alist)
+
+(use-package tide :ensure t)
+(use-package company :ensure t)
+(use-package flycheck :ensure t)
+
+(defun setup-tide-mode ()
+  (interactive)
+  (tide-setup)
+  (flycheck-mode +1)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (eldoc-mode +1)
+  (tide-hl-identifier-mode +1)
+  ;; company is an optional dependency. You have to
+  ;; install it separately via package-install
+  ;; `M-x package-install [ret] company`
+  (company-mode +1))
+(require 'web-mode)
+
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+(add-hook 'web-mode-hook
+          (lambda ()
+            (when (string-equal "tsx" (file-name-extension buffer-file-name))
+              (setup-tide-mode))))
+
+;; enable typescript - tslint checker
+(flycheck-add-mode 'typescript-tslint 'web-mode)
+
+;; aligns annotation to the right hand side
+(setq company-tooltip-align-annotations t)
+
+;; formats the buffer before saving
+(add-hook 'before-save-hook 'tide-format-before-save)
+
+(add-hook 'typescript-mode-hook #'setup-tide-mode)
+;; ====  End Of Typescript ====
+
+;; Put backup files neatly away
+(let ((backup-dir "~/.saves/emacs/backups")
+      (auto-saves-dir "~/.saves/emacs/auto-saves/"))
+  (dolist (dir (list backup-dir auto-saves-dir))
+    (when (not (file-directory-p dir))
+      (make-directory dir t)))
+  (setq backup-directory-alist `(("." . ,backup-dir))
+        auto-save-file-name-transforms `((".*" ,auto-saves-dir t))
+        auto-save-list-file-prefix (concat auto-saves-dir ".saves-")
+        tramp-backup-directory-alist `((".*" . ,backup-dir))
+        tramp-auto-save-directory auto-saves-dir))
+
+(setq backup-by-copying t    ; Don't delink hardlinks
+      delete-old-versions t  ; Clean up the backups
+      version-control t      ; Use version numbers on backups,
+      kept-new-versions 5    ; keep some new versions
+      kept-old-versions 2)   ; and some old ones, too
+
+(setq create-lockfiles nil)
+
 (require 'telega)
 (setq telega-use-docker t)
 (telega)
+
 
