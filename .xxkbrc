@@ -3,13 +3,14 @@ XXkb.image.path: /usr/share/xxkb
 XXkb.group.base: 1
 XXkb.group.alt: 2
 
+XXkb.mainwindow.type: tray
 XXkb.mainwindow.enable: yes
-XXkb.mainwindow.geometry: 15x15-0-0
-XXkb.mainwindow.image.1: en15.xpm
-XXkb.mainwindow.image.2: ua15.xpm
-XXkb.mainwindow.image.3: ru15.xpm
-XXkb.mainwindow.image.4: 
+XXkb.mainwindow.geometry: 15x15-1250-3
 XXkb.mainwindow.label.font: -misc-*-r-*-20-*
+
+XXkb.mainwindow.image.1: en.svg
+XXkb.mainwindow.image.2: ua.svg
+XXkb.mainwindow.image.3: ru.svg
 
 XXkb.button.enable: no
 
@@ -22,14 +23,11 @@ XXkb.*.label.foreground: white
 XXkb.*.label.background: blue4
 XXkb.*.label.enable: no
 
-XXkb.mainwindow.type: top
+! XXkb.mainwindow.type: top
 ! possible values - normal, top, tray, wmaker
 
 XXkb.button.enable: no
-XXkb.button.geometry: 15x15-60+7
-XXkb.button.image.1: en15.xpm
-XXkb.button.image.2: ua15.xpm
-XXkb.button.image.3: ru15.xpm
+XXkb.button.geometry: 10x10+80+80
 XXkb.button.label.font: -misc-*-r-*-13-*
 
 XXkb.controls.add_when_start: yes

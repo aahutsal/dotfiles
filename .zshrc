@@ -126,10 +126,6 @@ fi
 #     tmux attach -t default || tmux new -s default
 # fi
 
-export NVM_DIR="$HOME/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 # Add user-local path
 export PATH=~/bin:$PATH
 export JAVA_HOME=/opt/openjdk-bin-17
@@ -153,11 +149,19 @@ alias sleepquad="ssh quad 'sudo shutdown -h now'"
 alias sleepq520="ssh q520 'sudo s2ram'"
 alias sleepall='sleepquad;sleepq520'
 alias aws='docker exec -ti aws-cli aws '
+alias kali='docker exec -ti kali /bin/bash'
 
 # Prompt
 # autoload -U promptinit; promptinit
-# prompt fire blue green re
+# prompt fire blue green red
 
+echo "Running terminal"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+PATH="/home/archer/perl5/bin${PATH:+:${PATH}:$HOME/.dotnet/tools}"; export PATH;
+PERL5LIB="/home/archer/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/archer/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/archer/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/archer/perl5"; export PERL_MM_OPT;
