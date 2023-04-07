@@ -1,4 +1,0 @@
-#!/bin/bash
-bluetoothctl << EOF
-disconnect E4:22:A5:67:D6:2B
-EOF
