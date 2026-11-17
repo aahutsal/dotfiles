@@ -2,3 +2,11 @@
 .projectile
 node_modules
 .*.~undo-tree~
+.spacemacs.d/**/*.elc
+.spacemacs.d/.cache
+.spacemacs.d/elpa
+.spacemacs.d/quelpa
+.spacemacs.d/auto-save-list
+.spacemacs.d/.local
+.spacemacs.d/.lsp*
+.spacemacs.env
